@@ -2,9 +2,7 @@ package com.paciente.controller;
 
 import javax.validation.Valid;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -20,18 +18,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.paciente.model.Paciente;
-import com.paciente.repository.PacienteRepository;
 import com.paciente.request.PacienteRequest;
 import com.paciente.response.PacienteDto;
-
+import com.paciente.service.PacienteService;
 
 @RestController
 @RequestMapping({ "/pacientes" })
 public class PacienteControler {
 
 	@Autowired
-	private PacienteRepository repository;
+	private PacienteService pacienteService;
 
 	@GetMapping
 	public Page<PacienteDto> findAll(@RequestParam(required = false) String nome,
@@ -40,44 +36,32 @@ public class PacienteControler {
 			@RequestParam(required = false, defaultValue = "nome") String campoOrdenado,
 			@RequestParam(required = false, defaultValue = "") String directionType) {
 		Direction direction = "desc".equalsIgnoreCase(directionType) ? Direction.DESC : Direction.ASC;
-		return repository.findAll(PageRequest.of(pagina, quantidade, Sort.by(direction, campoOrdenado)))
-				.map(PacienteDto::toDto);
+		return pacienteService.findAll(PageRequest.of(pagina, quantidade, Sort.by(direction, campoOrdenado)));
 	}
 
 	@GetMapping(path = { "/cpf/{cpf}" })
 	public ResponseEntity<PacienteDto> findById(@PathVariable @Valid String cpf) {
-		return repository.findByCpf(cpf).map(record -> {
-			return ResponseEntity.ok().body(PacienteDto.toDto(record));
-		}).orElse(ResponseEntity.notFound().build());
+		PacienteDto pacienteDto = pacienteService.findByCpf(cpf);
+		return ResponseEntity.ok().body(pacienteDto);
 	}
 
 	@PostMapping
 	public ResponseEntity<PacienteDto> create(@RequestBody @Valid PacienteRequest pacienteRequest) throws Exception {
-		Paciente paciente = PacienteRequest.toModel(pacienteRequest);
-
-		try {
-			paciente = repository.save(paciente);
-		} catch (DataIntegrityViolationException e) {
-			throw new Exception("Error sistemico");
-		}
-		return ResponseEntity.ok().body(PacienteDto.toDto(paciente));
+		PacienteDto pacienteDto = pacienteService.save(pacienteRequest);
+		return ResponseEntity.ok().body(pacienteDto);
 	}
 
 	@PutMapping(value = "/{pacienteId}")
-	public ResponseEntity<PacienteDto> update(@PathVariable("pacienteId") long pacienteid,
-			@RequestBody PacienteRequest pacienteRequest) {
-		return repository.findById(pacienteid).map(record -> {
-			BeanUtils.copyProperties(pacienteRequest, record, "pacienteId");
-			return ResponseEntity.ok().body(PacienteDto.toDto(repository.save(record)));
-		}).orElse(ResponseEntity.notFound().build());
+	public ResponseEntity<PacienteDto> update(@PathVariable("pacienteId") long pacienteId,
+			@RequestBody PacienteRequest pacienteRequest) throws Exception {
+		PacienteDto pacienteDto = pacienteService.update(pacienteRequest, pacienteId);
+		return ResponseEntity.ok().body(pacienteDto);
 	}
 
 	@DeleteMapping(path = { "/{pacienteId}" })
-	public ResponseEntity<Object> delete(@PathVariable @Valid long pacienteId) {
-		return repository.findById(pacienteId).map(record -> {
-			repository.deleteById(pacienteId);
-			return ResponseEntity.noContent().build();
-		}).orElse(ResponseEntity.notFound().build());
+	public ResponseEntity<Object> delete(@PathVariable @Valid long pacienteId) throws Exception {
+		pacienteService.delete(pacienteId);
+		return ResponseEntity.noContent().build();
 	}
 
 }
