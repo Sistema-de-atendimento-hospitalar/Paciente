@@ -2,7 +2,8 @@ package com.paciente.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import com.paciente.model.Endereco;
+
+import com.paciente.domain.model.Endereco;
 
 @Repository
 public interface EnderecoRepository extends JpaRepository<Endereco, Long> {

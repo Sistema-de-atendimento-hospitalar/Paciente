@@ -1,9 +1,8 @@
-package com.paciente.model;
+package com.paciente.domain.model;
 
 import java.time.LocalDate;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,50 +13,54 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.modelmapper.ModelMapper;
+
+import com.paciente.domain.response.PacienteResponse;
+
 @Entity
 @Table(name = "t_paciente")
 public class Paciente {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "paciente_id")
 	private Long pacienteId;
-	
+
+	@OneToOne
+	@JoinColumn(name = "cartao_saude_id", nullable = true)
+	private CartaoSaude cartaoSaude;
+
+	@OneToMany(mappedBy = "paciente")
+	@Column(nullable = true)
+	private List<Endereco> enderecos;
+
+	@OneToMany(mappedBy = "paciente")
+	@Column(nullable = true)
+	private List<Telefone> telefones;
+
 	@Column(name = "nome")
 	private String nome;
-	
-	@Column(name = "email")
+
+	@Column(name = "email", unique = true)
 	private String email;
-	
-	@Column(name = "cpf")
+
+	@Column(name = "cpf", unique = true)
 	private String cpf;
-	
+
 	@Column(name = "rg")
 	private String rg;
-	
+
 	@Column(name = "org_expedidor")
 	private String orgExpedidorRg;
-	
+
 	@Column(name = "emissao_rg")
 	private LocalDate emissaoRg;
-	
+
 	@Column(name = "dt_nascimento")
 	private LocalDate dtNascimento;
-	
+
 	@Column(name = "sexo")
 	private String sexo;
-	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "convenio_id")
-	private CartaoSaude cartaoSaude;
-	
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "endereco_id")
-	private List<Endereco> enderecos;
-	
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "telefone_id")
-	private List<Telefone> telefones;
 
 	public Long getPacienteId() {
 		return pacienteId;
@@ -65,6 +68,30 @@ public class Paciente {
 
 	public void setPacienteId(Long pacienteId) {
 		this.pacienteId = pacienteId;
+	}
+
+	public CartaoSaude getCartaoSaude() {
+		return cartaoSaude;
+	}
+
+	public void setCartaoSaude(CartaoSaude cartaoSaude) {
+		this.cartaoSaude = cartaoSaude;
+	}
+
+	public List<Endereco> getEnderecos() {
+		return enderecos;
+	}
+
+	public void setEnderecos(List<Endereco> enderecos) {
+		this.enderecos = enderecos;
+	}
+
+	public List<Telefone> getTelefones() {
+		return telefones;
+	}
+
+	public void setTelefones(List<Telefone> telefones) {
+		this.telefones = telefones;
 	}
 
 	public String getNome() {
@@ -131,28 +158,9 @@ public class Paciente {
 		this.sexo = sexo;
 	}
 
-	public CartaoSaude getCartaoSaude() {
-		return cartaoSaude;
-	}
-
-	public void setCartaoSaude(CartaoSaude cartaoSaude) {
-		this.cartaoSaude = cartaoSaude;
-	}
-
-	public List<Endereco> getEnderecos() {
-		return enderecos;
-	}
-
-	public void setEnderecos(List<Endereco> enderecos) {
-		this.enderecos = enderecos;
-	}
-
-	public List<Telefone> getTelefones() {
-		return telefones;
-	}
-
-	public void setTelefones(List<Telefone> telefones) {
-		this.telefones = telefones;
+	public static Paciente toModel(PacienteResponse paciente) {
+		ModelMapper mapper = new ModelMapper();
+		return mapper.map(paciente, Paciente.class);
 	}
 
 }

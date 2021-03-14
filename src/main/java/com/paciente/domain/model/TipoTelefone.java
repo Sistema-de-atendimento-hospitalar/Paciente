@@ -1,4 +1,4 @@
-package com.paciente.model;
+package com.paciente.domain.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,13 +10,21 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "t_tipo_telefone")
 public class TipoTelefone {
-	
+
+	public TipoTelefone() {
+		super();
+	}
+
+	public TipoTelefone(Integer tipoTelefoneId) {
+		this.tipoTelefoneId = tipoTelefoneId;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "tp_telefone_id")
 	private Integer tipoTelefoneId;
-	
-	@Column(name = "ds_tipo_telefone")
+
+	@Column(name = "ds_tipo_telefone", nullable = false)
 	private String descTipoTelefone;
 
 	public String getDescTipoTelefone() {
@@ -34,5 +42,5 @@ public class TipoTelefone {
 	public void setTipoTelefoneId(Integer tipoTelefoneId) {
 		this.tipoTelefoneId = tipoTelefoneId;
 	}
-	
+
 }

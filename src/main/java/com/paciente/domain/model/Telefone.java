@@ -1,11 +1,13 @@
-package com.paciente.model;
+package com.paciente.domain.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -18,15 +20,19 @@ public class Telefone {
 	@Column(name = "telefone_id")
 	private Long telefoneId;
 	
-	@Column(name = "nr_telefone")
+	@Column(name = "nr_telefone", nullable = false)
 	private String numTelefone;
 	
-	@Column(name = "nr_ddd")
+	@Column(name = "nr_ddd", nullable = false)
 	private Integer numDdd;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "tp_telefone_id")
 	private TipoTelefone tipoTelefone;
+	
+	@ManyToOne
+	@JoinColumn(name = "paciente_id", nullable = false)
+	private Paciente paciente;
 
 	public String getNumTelefone() {
 		return numTelefone;
@@ -59,6 +65,13 @@ public class Telefone {
 	public void setTelefoneId(Long telefoneId) {
 		this.telefoneId = telefoneId;
 	}
-	
 
+	public Paciente getPaciente() {
+		return paciente;
+	}
+
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
+	}
+	
 }

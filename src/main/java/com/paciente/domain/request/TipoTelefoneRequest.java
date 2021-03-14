@@ -1,10 +1,18 @@
-package com.paciente.request;
+package com.paciente.domain.request;
 
 public class TipoTelefoneRequest {
 
 	private Integer tipoTelefoneId;
 
 	private String descTipoTelefone;
+
+	public Integer getTipoTelefoneId() {
+		return tipoTelefoneId;
+	}
+
+	public void setTipoTelefoneId(Integer tipoTelefoneId) {
+		this.tipoTelefoneId = tipoTelefoneId;
+	}
 
 	public String getDescTipoTelefone() {
 		return descTipoTelefone;
@@ -14,12 +22,6 @@ public class TipoTelefoneRequest {
 		this.descTipoTelefone = descTipoTelefone;
 	}
 
-	public Integer getTipoTelefoneId() {
-		return tipoTelefoneId;
-	}
-
-	public void setTipoTelefoneId(Integer tipoTelefoneId) {
-		this.tipoTelefoneId = tipoTelefoneId;
-	}
+	
 
 }
