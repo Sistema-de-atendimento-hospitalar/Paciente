@@ -1,4 +1,4 @@
-package com.paciente.request;
+package com.paciente.domain.request;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -13,7 +13,7 @@ public class TelefoneRequest {
 	@NotBlank(message = "DDD não pode está em branco")
 	private Integer numDdd;
 	
-	private TipoTelefoneRequest tipoTelefoneRequest;
+	private TipoTelefoneRequest tipoTelefone;
 
 	public String getNumTelefone() {
 		return numTelefone;
@@ -31,12 +31,12 @@ public class TelefoneRequest {
 		this.numDdd = numDdd;
 	}
 
-	public TipoTelefoneRequest getTipoTelefoneRequest() {
-		return tipoTelefoneRequest;
+	public TipoTelefoneRequest getTipoTelefone() {
+		return tipoTelefone;
 	}
 
-	public void setTipoTelefoneRequest(TipoTelefoneRequest tipoTelefoneRequest) {
-		this.tipoTelefoneRequest = tipoTelefoneRequest;
+	public void setTipoTelefone(TipoTelefoneRequest tipoTelefone) {
+		this.tipoTelefone = tipoTelefone;
 	}
 
 }

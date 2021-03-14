@@ -1,4 +1,4 @@
-package com.paciente.request;
+package com.paciente.domain.request;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;

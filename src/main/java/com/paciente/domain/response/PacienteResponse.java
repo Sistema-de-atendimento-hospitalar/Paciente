@@ -1,17 +1,18 @@
-package com.paciente.response;
+package com.paciente.domain.response;
 
 import java.time.LocalDate;
 import java.util.List;
 
 import org.modelmapper.ModelMapper;
 
-import com.paciente.model.Paciente;
-import com.paciente.request.CartaoSaudeRequest;
-import com.paciente.request.EnderecoRequest;
-import com.paciente.request.TelefoneRequest;
+import com.paciente.domain.model.Paciente;
+import com.paciente.domain.request.CartaoSaudeRequest;
+import com.paciente.domain.request.EnderecoRequest;
+import com.paciente.domain.request.TelefoneRequest;
 
-public class PacienteDto {
+public class PacienteResponse {
 
+	private Long pacienteId;
 	private Long cpf;
 	private String nome;
 	private String email;
@@ -38,9 +39,18 @@ public class PacienteDto {
 //		this.orgExpedidoRg = paciente.getOrgExpedidor();
 //		this.emissaoRg = paciente.getEmissaoRg();
 //	}
+	
 
 	public Long getCpf() {
 		return cpf;
+	}
+
+	public Long getPacienteId() {
+		return pacienteId;
+	}
+
+	public void setPacienteId(Long pacienteId) {
+		this.pacienteId = pacienteId;
 	}
 
 	public void setCpf(Long cpf) {
@@ -129,9 +139,9 @@ public class PacienteDto {
 		this.telefones = telefones;
 	}
 	
-	public static PacienteDto toDto(Paciente paciente) {
+	public static PacienteResponse toDto(Paciente paciente) {
 		ModelMapper mapper = new ModelMapper();
-		return mapper.map(paciente, PacienteDto.class);
+		return mapper.map(paciente, PacienteResponse.class);
 	}
 
 }

@@ -1,45 +1,14 @@
-package com.paciente.model;
+package com.paciente.domain.dto;
 
 import java.time.LocalDate;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+public class CartaoSaudeDto {
 
-@Entity
-@Table(name = "t_cartao_saude")
-public class CartaoSaude {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "convenio_id")
-	private Long convenioId;
-	
-	@Column(name = "convenio")
 	private String convenio;
-	
-	@Column(name = "tp_contrato")
 	private String tipoContrato;
-	
-	@Column(name = "rede")
 	private String rede;
-	
-	@Column(name = "nr_carteira")
 	private Long numeroCarteira;
-	
-	@Column(name = "validade")
 	private LocalDate validade;
-
-	public Long getConvenioId() {
-		return convenioId;
-	}
-
-	public void setConvenioId(Long convenioId) {
-		this.convenioId = convenioId;
-	}
 
 	public String getConvenio() {
 		return convenio;

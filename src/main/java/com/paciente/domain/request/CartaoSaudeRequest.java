@@ -1,4 +1,4 @@
-package com.paciente.request;
+package com.paciente.domain.request;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -23,11 +23,9 @@ public class CartaoSaudeRequest implements Serializable {
 	private String rede;
 
 	@NotNull(message = "O número da carteira não pode ser nulo")
-	@NotBlank(message = "O número da carteira  não pode está em branco")
 	private Long numeroCarteira;
 
 	@NotNull(message = "A validade não pode ser nulo")
-	@NotBlank(message = "A validade não pode está em branco")
 	private LocalDate validade;
 
 	public String getConvenio() {

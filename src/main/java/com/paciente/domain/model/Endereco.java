@@ -1,4 +1,4 @@
-package com.paciente.model;
+package com.paciente.domain.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -6,39 +6,44 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "t_pac_endereco")
 public class Endereco {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "endereco_id")
 	private Long enderecoId;
 	
-	@Column(name = "cep")
+	@ManyToOne
+	@JoinColumn(name = "paciente_id", nullable = false)
+	private Paciente paciente;
+
+	@Column(name = "cep", nullable = false)
 	private String cep;
-	
-	@Column(name = "lougradouro")
+
+	@Column(name = "lougradouro", nullable = false)
 	private String logradouro;
-	
-	@Column(name = "nr_imovel")
+
+	@Column(name = "nr_imovel", nullable = false)
 	private String numImovel;
-	
+
 	@Column(name = "ds_complemento")
 	private String dsComplemento;
-	
-	@Column(name = "bairro")
+
+	@Column(name = "bairro", nullable = false)
 	private String bairro;
-	
-	@Column(name = "cidade")
+
+	@Column(name = "cidade", nullable = false)
 	private String cidade;
-	
-	@Column(name = "estado")
+
+	@Column(name = "estado", nullable = false)
 	private String estado;
-	
+
 	@OneToOne
 	@JoinColumn(name = "tpLogradouroId")
 	private TipoLogradouro tipoLogradouro;
@@ -49,6 +54,14 @@ public class Endereco {
 
 	public void setEnderecoId(Long enderecoId) {
 		this.enderecoId = enderecoId;
+	}
+
+	public Paciente getPaciente() {
+		return paciente;
+	}
+
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
 	}
 
 	public String getCep() {

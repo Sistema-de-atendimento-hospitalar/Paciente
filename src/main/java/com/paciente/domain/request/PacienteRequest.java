@@ -1,8 +1,7 @@
-package com.paciente.request;
+package com.paciente.domain.request;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.List;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -11,10 +10,10 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.br.CPF;
 import org.modelmapper.ModelMapper;
 
-import com.paciente.model.Paciente;
+import com.paciente.domain.model.Paciente;
 
 public class PacienteRequest implements Serializable {
-	
+
 	private static final long serialVersionUID = 9006236584152352969L;
 
 	@CPF
@@ -48,14 +47,14 @@ public class PacienteRequest implements Serializable {
 	@NotNull(message = "A Emissão do RG não pode ser nulo")
 	private LocalDate emissaoRg;
 
-	@NotNull(message = "Não pode ser nulo")
-	private List<EnderecoRequest> enderecos;
-	
-	@NotNull(message = "Não pode ser nulo")
-	private CartaoSaudeRequest cartaoSaude;
-	
-	@NotNull(message = "Não pode ser nulo")
-	private List<TelefoneRequest> telefones;
+//	@NotNull(message = "Não pode ser nulo")
+//	private List<EnderecoRequest> enderecos;
+//	
+//	@NotNull(message = "Não pode ser nulo")
+//	private CartaoSaudeRequest cartaoSaude;
+//	
+//	@NotNull(message = "Não pode ser nulo")
+//	private List<TelefoneRequest> telefones;
 
 	public String getCpf() {
 		return cpf;
@@ -105,7 +104,6 @@ public class PacienteRequest implements Serializable {
 		this.rg = rg;
 	}
 
-
 	public String getOrgExpedidorRg() {
 		return orgExpedidorRg;
 	}
@@ -122,34 +120,33 @@ public class PacienteRequest implements Serializable {
 		this.emissaoRg = emissaoRg;
 	}
 
-	public List<EnderecoRequest> getEnderecos() {
-		return enderecos;
-	}
+//	public List<EnderecoRequest> getEnderecos() {
+//		return enderecos;
+//	}
+//
+//	public void setEnderecos(List<EnderecoRequest> enderecos) {
+//		this.enderecos = enderecos;
+//	}
+//
+//	public CartaoSaudeRequest getCartaoSaude() {
+//		return cartaoSaude;
+//	}
+//
+//	public void setCartaoSaude(CartaoSaudeRequest cartaoSaude) {
+//		this.cartaoSaude = cartaoSaude;
+//	}
+//
+//	public List<TelefoneRequest> getTelefones() {
+//		return telefones;
+//	}
+//
+//	public void setTelefones(List<TelefoneRequest> telefones) {
+//		this.telefones = telefones;
+//	}
 
-	public void setEnderecos(List<EnderecoRequest> enderecos) {
-		this.enderecos = enderecos;
-	}
-
-	public CartaoSaudeRequest getCartaoSaude() {
-		return cartaoSaude;
-	}
-
-	public void setCartaoSaude(CartaoSaudeRequest cartaoSaude) {
-		this.cartaoSaude = cartaoSaude;
-	}
-
-	public List<TelefoneRequest> getTelefones() {
-		return telefones;
-	}
-
-	public void setTelefones(List<TelefoneRequest> telefones) {
-		this.telefones = telefones;
-	}
-	
 	public static Paciente toModel(PacienteRequest pacienteRequest) {
 		ModelMapper mapper = new ModelMapper();
 		return mapper.map(pacienteRequest, Paciente.class);
 	}
-	
 
 }

@@ -1,4 +1,4 @@
-package com.paciente.model;
+package com.paciente.domain.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,16 +10,14 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "t_tipo_logradouro")
 public class TipoLogradouro {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "tp_logradouro_id")
 	private Long tpLogradouroId;
-	
-	@Column(name = "ds_tipo_logradouro")
+
+	@Column(name = "ds_tipo_logradouro", nullable = false)
 	private String dsTpLogradouro;
-	
-	
 
 	public Long getTpLogradouroId() {
 		return tpLogradouroId;
