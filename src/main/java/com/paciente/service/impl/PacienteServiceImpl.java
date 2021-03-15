@@ -11,6 +11,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.paciente.domain.mapper.EnderecoMapper;
+import com.paciente.domain.mapper.PacienteMapper;
 import com.paciente.domain.mapper.TelefoneMapper;
 import com.paciente.domain.model.CartaoSaude;
 import com.paciente.domain.model.Endereco;
@@ -44,6 +45,7 @@ public class PacienteServiceImpl implements PacienteService {
 
 	@Override
 	public PacienteResponse findByCpf(String cpf) {
+		// TODO
 		Paciente paciente = pacienteRepository.findByCpf(cpf).orElseThrow(IllegalArgumentException::new);
 		return PacienteResponse.toDto(paciente);
 	}
@@ -67,12 +69,11 @@ public class PacienteServiceImpl implements PacienteService {
 
 	@Override
 	public PacienteResponse update(PacienteRequest pacienteRequest, Long pacienteId) throws Exception {
-		PacienteResponse pacienteDto = findById(pacienteId);
-		if (pacienteDto != null) {
-			BeanUtils.copyProperties(pacienteRequest, pacienteDto, "pacienteId");
-		}
+		Paciente paciente = findByPacienteId(pacienteId);
+		BeanUtils.copyProperties(pacienteRequest, paciente, "pacienteId");
+		Paciente pacienteUpdate = pacienteRepository.save(paciente);
 
-		return null;
+		return PacienteMapper.toResponse(pacienteUpdate);
 	}
 
 	@Override
