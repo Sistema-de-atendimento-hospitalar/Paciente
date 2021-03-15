@@ -1,0 +1,241 @@
+{
+	"info": {
+		"_postman_id": "278d3b39-f4f9-4627-9ff4-a6db8924c19e",
+		"name": "Sistema atendimento",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Paciente",
+			"item": [
+				{
+					"name": "Obtém Paciente",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/paciente",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"paciente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtém Paciente por CPF",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/paciente/cpf/06566463577",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"paciente",
+								"cpf",
+								"06566463577"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtém Paciente por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/paciente/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"paciente",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastra Paciente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cpf\": \"06566463577\",\r\n    \"dtNascimento\": \"1998-09-17\",\r\n    \"nome\": \"Stefany Portinai\",\r\n    \"email\": \"stef@gmail.com\",\r\n    \"sexo\": \"feminino\",\r\n    \"rg\": \"1616165898\",\r\n    \"orgExpedidorRg\": \"SSP-BA\",\r\n    \"emissaoRg\": \"2020-05-02\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/paciente",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"paciente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastra Endereço paciente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"cep\": \"41225795\",\r\n        \"logradouro\": \"Alameda Palmeira\",\r\n        \"numImovel\": \"18E\",\r\n        \"dsComplemento\": \"casa\",\r\n        \"bairro\": \"Cabula\",\r\n        \"cidade\": \"Salvador\",\r\n        \"estado\": \"Bahia\",\r\n        \"tipoLogradouro\": \"Rua\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/paciente/1/endereco",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"paciente",
+								"1",
+								"endereco"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastra cartão saude paciente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"convenio\": \"Bradesco\",\r\n    \"tipoContrato\": \"Empresarial\",\r\n    \"rede\": \"Nacional\",\r\n    \"numeroCarteira\": 18181818,\r\n    \"validade\": \"2022-05-02\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/paciente/1/cartaoSaude",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"paciente",
+								"1",
+								"cartaoSaude"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastra Telefone paciente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"cep\": \"41225795\",\r\n        \"logradouro\": \"Alameda Palmeira\",\r\n        \"numImovel\": \"18E\",\r\n        \"dsComplemento\": \"casa\",\r\n        \"bairro\": \"Cabula\",\r\n        \"cidade\": \"Salvador\",\r\n        \"estado\": \"Bahia\",\r\n        \"tipoLogradouro\": \"Rua\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/paciente/1/endereco",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"paciente",
+								"1",
+								"endereco"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar Paciente",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/medicos/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"medicos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualiza Paciente",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"crm\": 123456789,\r\n    \"nome\": \"Stefany Alterado\",\r\n    \"email\": \"stefany@gmail.com\",\r\n    \"senha\": \"00112233\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/medicos/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"medicos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
