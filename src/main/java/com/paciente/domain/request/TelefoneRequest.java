@@ -5,6 +5,8 @@ import javax.validation.constraints.NotNull;
 
 public class TelefoneRequest {
 	
+	private Long telefoneId;
+	
 	@NotNull(message = "O número de telefone não pode ser nula")
 	@NotBlank(message = "O número de telefone não pode está em branco")
 	private String numTelefone;
@@ -14,6 +16,14 @@ public class TelefoneRequest {
 	private Integer numDdd;
 	
 	private TipoTelefoneRequest tipoTelefone;
+	
+	public Long getTelefoneId() {
+		return telefoneId;
+	}
+
+	public void setTelefoneId(Long telefoneId) {
+		this.telefoneId = telefoneId;
+	}
 
 	public String getNumTelefone() {
 		return numTelefone;
