@@ -9,6 +9,8 @@ import javax.validation.constraints.NotNull;
 public class CartaoSaudeRequest implements Serializable {
 	
 	private static final long serialVersionUID = 2877536737944486333L;
+	
+	private Long convenioId;
 
 	@NotNull(message = "convenio não pode ser nulo")
 	@NotBlank(message = "convenio não pode está em branco")
@@ -27,6 +29,14 @@ public class CartaoSaudeRequest implements Serializable {
 
 	@NotNull(message = "A validade não pode ser nulo")
 	private LocalDate validade;
+	
+	public Long getConvenioId() {
+		return convenioId;
+	}
+
+	public void setConvenioId(Long convenioId) {
+		this.convenioId = convenioId;
+	}
 
 	public String getConvenio() {
 		return convenio;
