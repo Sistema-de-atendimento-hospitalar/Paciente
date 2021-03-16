@@ -130,11 +130,20 @@ public class PacienteServiceImpl implements PacienteService {
 	public PacienteResponse updateV2(PutPacienteRequest pacienteRequest, long pacienteId) throws Exception {
 		Paciente paciente = findByPacienteId(pacienteId);
 		BeanUtils.copyProperties(pacienteRequest, paciente, "pacienteId");
+		BeanUtils.copyProperties(pacienteRequest.getCartaoSaude(), paciente.getCartaoSaude(), "convenioId");
+		
+		for (int i = 0; i < pacienteRequest.getTelefones().size(); i++) {
+			BeanUtils.copyProperties(pacienteRequest.getTelefones().get(i), paciente.getTelefones().get(i), "telefoneId");
+		}
+		
+		
+		for (int i = 0; i < pacienteRequest.getEnderecos().size(); i++) {
+			BeanUtils.copyProperties(pacienteRequest.getEnderecos().get(i), paciente.getEnderecos().get(i), "enderecoId");
+		}
+		
 		Paciente pacienteUpdate = pacienteRepository.save(paciente);
-
 		return PacienteMapper.toResponse(pacienteUpdate);
 	}
-	
 	
 
 }

@@ -17,8 +17,8 @@ public class Endereco {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "endereco_id")
-	private Long enderecoId;
 	
+	private Long enderecoId;
 	@ManyToOne
 	@JoinColumn(name = "paciente_id", nullable = false)
 	private Paciente paciente;
