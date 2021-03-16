@@ -10,6 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import com.paciente.domain.request.CartaoSaudeRequest;
 import com.paciente.domain.request.EnderecoRequest;
 import com.paciente.domain.request.PacienteRequest;
+import com.paciente.domain.request.PutPacienteRequest;
 import com.paciente.domain.request.TelefoneRequest;
 import com.paciente.domain.response.PacienteResponse;
 
@@ -32,5 +33,7 @@ public interface PacienteService {
 	void createTelefone(@Valid List<TelefoneRequest> telefoneRequest, Long pacienteId) throws Exception;
 
 	void createCartaoSaude(@Valid CartaoSaudeRequest cartaoSaudeRequest, Long pacienteId) throws Exception;
+
+	PacienteResponse updateV2(PutPacienteRequest pacienteRequest, long pacienteId) throws Exception;
 
 }

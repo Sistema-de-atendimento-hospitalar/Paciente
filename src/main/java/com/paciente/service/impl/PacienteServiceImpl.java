@@ -20,6 +20,7 @@ import com.paciente.domain.model.Telefone;
 import com.paciente.domain.request.CartaoSaudeRequest;
 import com.paciente.domain.request.EnderecoRequest;
 import com.paciente.domain.request.PacienteRequest;
+import com.paciente.domain.request.PutPacienteRequest;
 import com.paciente.domain.request.TelefoneRequest;
 import com.paciente.domain.response.PacienteResponse;
 import com.paciente.repository.PacienteRepository;
@@ -59,7 +60,7 @@ public class PacienteServiceImpl implements PacienteService {
 	public PacienteResponse save(PacienteRequest pacienteRequest) throws Exception {
 		Paciente paciente = PacienteRequest.toModel(pacienteRequest);
 
-		try {
+		try { 
 			paciente = pacienteRepository.save(paciente);
 		} catch (DataIntegrityViolationException e) {
 			throw new Exception("Error sistemico", e);
@@ -124,5 +125,16 @@ public class PacienteServiceImpl implements PacienteService {
 	private Paciente findByPacienteId(Long pacienteId) throws Exception {
 		return pacienteRepository.findById(pacienteId).orElseThrow(Exception::new);
 	}
+
+	@Override
+	public PacienteResponse updateV2(PutPacienteRequest pacienteRequest, long pacienteId) throws Exception {
+		Paciente paciente = findByPacienteId(pacienteId);
+		BeanUtils.copyProperties(pacienteRequest, paciente, "pacienteId");
+		Paciente pacienteUpdate = pacienteRepository.save(paciente);
+
+		return PacienteMapper.toResponse(pacienteUpdate);
+	}
+	
+	
 
 }

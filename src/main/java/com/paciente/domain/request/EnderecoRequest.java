@@ -4,6 +4,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 public class EnderecoRequest {
+	
+	private Long enderecoId;
 
 	@NotNull(message = "CEP não pode ser nulo")
 	@NotBlank(message = "CEP não pode está em branco")
@@ -33,6 +35,14 @@ public class EnderecoRequest {
 
 	@NotBlank(message = "O tipo de logradouro não pode ser nulo")
 	private String tipoLogradouro;
+	
+	public Long getEnderecoId() {
+		return enderecoId;
+	}
+
+	public void setEnderecoId(Long enderecoId) {
+		this.enderecoId = enderecoId;
+	}
 
 	public String getCep() {
 		return cep;
