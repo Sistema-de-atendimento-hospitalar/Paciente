@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.paciente.domain.model.Paciente;
 import com.paciente.domain.request.CartaoSaudeRequest;
 import com.paciente.domain.request.EnderecoRequest;
 import com.paciente.domain.request.PacienteRequest;
@@ -98,17 +99,9 @@ public class PacienteControler {
 		PacienteResponse pacienteDto = pacienteService.updateV2(pacienteRequest, pacienteId);
 		return ResponseEntity.ok().body(pacienteDto);
 	}
-	
-//	@PutMapping(value = "/{pacienteId}/endereco")
-//	public void updateAddrees(@RequestBody @Valid List<PacienteResponse> enderecoResponse) throws Exception {
-//		PacienteResponse pacienteDto = enderecoService.update(enderecoResponse, pacienteId);
-//		return ResponseEntity.ok().body(pacienteDto);
-//	}
-//	
-	
 
 	@DeleteMapping(path = { "/v1/paciente/{pacienteId}" })
-	public ResponseEntity<Object> delete(@PathVariable long pacienteId) throws Exception {
+	public ResponseEntity<Paciente> delete(@PathVariable long pacienteId) throws Exception {
 		pacienteService.delete(pacienteId);
 		return ResponseEntity.noContent().build();
 	}

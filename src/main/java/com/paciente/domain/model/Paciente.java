@@ -3,6 +3,7 @@ package com.paciente.domain.model;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,15 +27,15 @@ public class Paciente {
 	@Column(name = "paciente_id")
 	private Long pacienteId;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "cartao_saude_id", nullable = true)
 	private CartaoSaude cartaoSaude;
 
-	@OneToMany(mappedBy = "paciente")
+	@OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL)
 	@Column(nullable = true)
 	private List<Endereco> enderecos;
 
-	@OneToMany(mappedBy = "paciente")
+	@OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL)
 	@Column(nullable = true)
 	private List<Telefone> telefones;
 
