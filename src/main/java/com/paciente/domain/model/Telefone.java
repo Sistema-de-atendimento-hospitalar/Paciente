@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "t_telefone")
 public class Telefone {
@@ -32,6 +34,7 @@ public class Telefone {
 	
 	@ManyToOne
 	@JoinColumn(name = "paciente_id", nullable = false)
+	@JsonIgnore
 	private Paciente paciente;
 
 	public String getNumTelefone() {
