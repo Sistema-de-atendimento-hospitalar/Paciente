@@ -24,6 +24,7 @@ import com.paciente.domain.request.PutPacienteRequest;
 import com.paciente.domain.request.TelefoneRequest;
 import com.paciente.domain.response.PacienteResponse;
 import com.paciente.repository.PacienteRepository;
+import com.paciente.repository.TipoTelefoneRepository;
 import com.paciente.service.CartaoSaudeService;
 import com.paciente.service.EnderecoService;
 import com.paciente.service.PacienteService;
@@ -43,12 +44,18 @@ public class PacienteServiceImpl implements PacienteService {
 	
 	@Autowired
 	private TelefoneService telefoneService;
+	
+	@Autowired
+	private TipoTelefoneRepository tipoTelefoneRepository;
 
 	@Override
 	public PacienteResponse findByCpf(String cpf) {
-		// TODO
-		Paciente paciente = pacienteRepository.findByCpf(cpf).orElseThrow(IllegalArgumentException::new);
-		return PacienteResponse.toDto(paciente);
+		PacienteResponse pacienteResponse = null;
+		Paciente paciente = pacienteRepository.findByCpf(cpf).orElse(null);
+		if (paciente != null) {
+			pacienteResponse = PacienteResponse.toDto(paciente); 
+		}
+		return pacienteResponse;
 	}
 
 	@Override
@@ -63,7 +70,7 @@ public class PacienteServiceImpl implements PacienteService {
 		try { 
 			paciente = pacienteRepository.save(paciente);
 		} catch (DataIntegrityViolationException e) {
-			throw new Exception("Error sistemico", e);
+			throw new Exception("constraint violada", e);
 		}
 		return PacienteResponse.toDto(paciente);
 	}
@@ -92,24 +99,24 @@ public class PacienteServiceImpl implements PacienteService {
 	}
 
 	@Override
-	public void createAddress(List<EnderecoRequest> enderecoRequest, Long pacienteId) throws Exception {
+	public List<Endereco> createAddress(List<EnderecoRequest> enderecoRequest, Long pacienteId) throws Exception {
 		Paciente paciente = findByPacienteId(pacienteId);
 
 		List<Endereco> enderecos = enderecoRequest.stream().map(EnderecoMapper::toModel).collect(Collectors.toList());
 		enderecos.forEach(endereco -> endereco.setPaciente(paciente));
 
-		enderecoService.save(enderecos);
+		return enderecoService.save(enderecos);
 
 	}
 
 	@Override
-	public void createTelefone(List<TelefoneRequest> telefoneRequest, Long pacienteId) throws Exception {
+	public List<Telefone> createTelefone(List<TelefoneRequest> telefoneRequest, Long pacienteId) throws Exception {
 		Paciente paciente = findByPacienteId(pacienteId);
 		
 		List<Telefone> telefones = telefoneRequest.stream().map(TelefoneMapper::toModel).collect(Collectors.toList());
 		telefones.forEach(telefone -> telefone.setPaciente(paciente));
 		
-		telefoneService.save(telefones);
+		return telefoneService.save(telefones);
 	}
 
 	@Override
