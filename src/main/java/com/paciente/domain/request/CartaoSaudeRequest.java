@@ -3,6 +3,7 @@ package com.paciente.domain.request;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import javax.validation.constraints.Future;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -28,6 +29,7 @@ public class CartaoSaudeRequest implements Serializable {
 	private Long numeroCarteira;
 
 	@NotNull(message = "A validade não pode ser nulo")
+	@Future
 	private LocalDate validade;
 	
 	public Long getConvenioId() {
