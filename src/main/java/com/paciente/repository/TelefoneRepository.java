@@ -7,5 +7,7 @@ import com.paciente.domain.model.Telefone;
 
 @Repository
 public interface TelefoneRepository extends JpaRepository<Telefone, Long> {
+	
+	void deleteByPacientePacienteId(Long pacienteId);
 
 }

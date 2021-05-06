@@ -24,6 +24,7 @@ public class PacienteResponse {
 	private List<EnderecoRequest> enderecos;
 	private CartaoSaudeRequest cartaoSaude;
 	private List<TelefoneRequest> telefones;
+	private String deficiencia;
 
 //	public PacienteDto() {
 //		super();
@@ -139,6 +140,14 @@ public class PacienteResponse {
 		this.telefones = telefones;
 	}
 	
+	public String getDeficiencia() {
+		return deficiencia;
+	}
+
+	public void setDeficiencia(String deficiencia) {
+		this.deficiencia = deficiencia;
+	}
+
 	public static PacienteResponse toDto(Paciente paciente) {
 		ModelMapper mapper = new ModelMapper();
 		return mapper.map(paciente, PacienteResponse.class);

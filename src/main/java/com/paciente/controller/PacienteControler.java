@@ -31,7 +31,10 @@ import com.paciente.domain.request.PacienteRequest;
 import com.paciente.domain.request.PutPacienteRequest;
 import com.paciente.domain.request.TelefoneRequest;
 import com.paciente.domain.response.PacienteResponse;
+import com.paciente.service.CartaoSaudeService;
+import com.paciente.service.EnderecoService;
 import com.paciente.service.PacienteService;
+import com.paciente.service.TelefoneService;
 
 @RestController
 @CrossOrigin()
@@ -39,6 +42,15 @@ public class PacienteControler {
 
 	@Autowired
 	private PacienteService pacienteService;
+
+	@Autowired
+	private EnderecoService enderecoService;
+
+	@Autowired
+	private TelefoneService telefoneService;
+
+	@Autowired
+	private CartaoSaudeService cartaoSaudeService;
 
 	@GetMapping("/v1/paciente")
 	public Page<PacienteResponse> findAll(@RequestParam(required = false) String nome,
@@ -99,6 +111,24 @@ public class PacienteControler {
 			@RequestBody PacienteRequest pacienteRequest) throws Exception {
 		PacienteResponse pacienteDto = pacienteService.update(pacienteRequest, pacienteId);
 		return ResponseEntity.ok().body(pacienteDto);
+	}
+
+	@PutMapping(value = "/v1/paciente/{pacienteId}/endereco")
+	public void updateEndereco(@RequestBody @Valid List<EnderecoRequest> enderecoRequest,
+			@PathVariable("pacienteId") long pacienteId) throws Exception {
+		enderecoService.update(enderecoRequest, pacienteId);
+	}
+
+	@PutMapping(value = "/v1/paciente/{pacienteId}/telefone")
+	public void updateTelefone(@RequestBody @Valid List<TelefoneRequest> telefoneRequest,
+			@PathVariable("pacienteId") long pacienteId) throws Exception {
+		telefoneService.update(telefoneRequest, pacienteId);
+	}
+
+	@PutMapping(value = "/v1/paciente/{pacienteId}/cartaoSaude")
+	public void updateCartaoSaude(@RequestBody @Valid CartaoSaudeRequest cartaoSaudeRequest,
+			@PathVariable("pacienteId") long pacienteId) throws Exception {
+		cartaoSaudeService.update(cartaoSaudeRequest, pacienteId);
 	}
 
 	@PutMapping(value = "/v2/paciente/{pacienteId}")

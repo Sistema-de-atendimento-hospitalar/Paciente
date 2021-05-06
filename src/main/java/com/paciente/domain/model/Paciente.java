@@ -62,6 +62,9 @@ public class Paciente {
 
 	@Column(name = "sexo")
 	private String sexo;
+	
+	@Column(name = "deficiencia", length = 60, nullable = true)
+	private String deficiencia;
 
 	public Long getPacienteId() {
 		return pacienteId;
@@ -157,6 +160,14 @@ public class Paciente {
 
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
+	}
+	
+	public String getDeficiencia() {
+		return deficiencia;
+	}
+
+	public void setDeficiencia(String deficiencia) {
+		this.deficiencia = deficiencia;
 	}
 
 	public static Paciente toModel(PacienteResponse paciente) {

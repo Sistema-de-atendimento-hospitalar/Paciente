@@ -46,15 +46,8 @@ public class PacienteRequest implements Serializable {
 
 	@NotNull(message = "A Emissão do RG não pode ser nulo")
 	private LocalDate emissaoRg;
-
-//	@NotNull(message = "Não pode ser nulo")
-//	private List<EnderecoRequest> enderecos;
-//	
-//	@NotNull(message = "Não pode ser nulo")
-//	private CartaoSaudeRequest cartaoSaude;
-//	
-//	@NotNull(message = "Não pode ser nulo")
-//	private List<TelefoneRequest> telefones;
+	
+	private String deficiencia;
 
 	public String getCpf() {
 		return cpf;
@@ -120,29 +113,13 @@ public class PacienteRequest implements Serializable {
 		this.emissaoRg = emissaoRg;
 	}
 
-//	public List<EnderecoRequest> getEnderecos() {
-//		return enderecos;
-//	}
-//
-//	public void setEnderecos(List<EnderecoRequest> enderecos) {
-//		this.enderecos = enderecos;
-//	}
-//
-//	public CartaoSaudeRequest getCartaoSaude() {
-//		return cartaoSaude;
-//	}
-//
-//	public void setCartaoSaude(CartaoSaudeRequest cartaoSaude) {
-//		this.cartaoSaude = cartaoSaude;
-//	}
-//
-//	public List<TelefoneRequest> getTelefones() {
-//		return telefones;
-//	}
-//
-//	public void setTelefones(List<TelefoneRequest> telefones) {
-//		this.telefones = telefones;
-//	}
+	public String getDeficiencia() {
+		return deficiencia;
+	}
+
+	public void setDeficiencia(String deficiencia) {
+		this.deficiencia = deficiencia;
+	}
 
 	public static Paciente toModel(PacienteRequest pacienteRequest) {
 		ModelMapper mapper = new ModelMapper();

@@ -13,6 +13,7 @@ public class PacienteDto {
 	private String rg;
 	private String orgExpedidorRg;
 	private LocalDate emissaoRg;
+	private String deficiencia;
 
 	public Long getPacienteId() {
 		return pacienteId;
@@ -84,6 +85,14 @@ public class PacienteDto {
 
 	public void setEmissaoRg(LocalDate emissaoRg) {
 		this.emissaoRg = emissaoRg;
+	}
+
+	public String getDeficiencia() {
+		return deficiencia;
+	}
+
+	public void setDeficiencia(String deficiencia) {
+		this.deficiencia = deficiencia;
 	}
 
 }

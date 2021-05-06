@@ -129,7 +129,8 @@ public class PacienteServiceImpl implements PacienteService {
 		pacienteRepository.save(paciente);
 	}
 
-	private Paciente findByPacienteId(Long pacienteId) throws Exception {
+	@Override
+	public Paciente findByPacienteId(Long pacienteId) throws Exception {
 		return pacienteRepository.findById(pacienteId).orElseThrow(Exception::new);
 	}
 
@@ -137,12 +138,21 @@ public class PacienteServiceImpl implements PacienteService {
 	public PacienteResponse updateV2(PutPacienteRequest pacienteRequest, long pacienteId) throws Exception {
 		Paciente paciente = findByPacienteId(pacienteId);
 		BeanUtils.copyProperties(pacienteRequest, paciente, "pacienteId");
-		BeanUtils.copyProperties(pacienteRequest.getCartaoSaude(), paciente.getCartaoSaude(), "convenioId");
+		if (pacienteRequest.getCartaoSaude() != null) {
+			BeanUtils.copyProperties(pacienteRequest.getCartaoSaude(), paciente.getCartaoSaude(), "convenioId");
+		}
+		
+		if (pacienteRequest.getTelefones().size() != paciente.getTelefones().size()) {
+			telefoneService.deleteByPacienteId(pacienteId);
+		} 
 		
 		for (int i = 0; i < pacienteRequest.getTelefones().size(); i++) {
 			BeanUtils.copyProperties(pacienteRequest.getTelefones().get(i), paciente.getTelefones().get(i), "telefoneId");
 		}
 		
+		if (pacienteRequest.getEnderecos().size() != paciente.getEnderecos().size()) {
+			enderecoService.deleteByPacienteId(pacienteId);
+		}
 		
 		for (int i = 0; i < pacienteRequest.getEnderecos().size(); i++) {
 			BeanUtils.copyProperties(pacienteRequest.getEnderecos().get(i), paciente.getEnderecos().get(i), "enderecoId");
