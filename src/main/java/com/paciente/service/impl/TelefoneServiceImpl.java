@@ -29,7 +29,7 @@ public class TelefoneServiceImpl implements TelefoneService {
 		return telefoneRepository.saveAll(telefones);
 	}
 
-	public void deleteByPacienteId(Long pacienteId) {
+	public void deleteByPacienteId(Long pacienteId, Long telefoneId) {
 		telefoneRepository.deleteByPacientePacienteId(pacienteId);
 	}
 

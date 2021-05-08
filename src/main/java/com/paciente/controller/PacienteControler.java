@@ -144,4 +144,25 @@ public class PacienteControler {
 		return ResponseEntity.noContent().build();
 	}
 
+	@DeleteMapping(path = { "/v1/paciente/{pacienteId}/endereco/{enderecoId}" })
+	public ResponseEntity<Paciente> deleteEndereco(@PathVariable Long pacienteId, @PathVariable Long enderecoId)
+			throws Exception {
+		enderecoService.deleteByPacienteId(pacienteId, enderecoId);
+		return ResponseEntity.noContent().build();
+	}
+
+	@DeleteMapping(path = { "/v1/paciente/{pacienteId}/telefone/{telefoneId}" })
+	public ResponseEntity<Paciente> deleteTelefone(@PathVariable Long pacienteId, @PathVariable Long telefoneId)
+			throws Exception {
+		telefoneService.deleteByPacienteId(pacienteId, telefoneId);
+		return ResponseEntity.noContent().build();
+	}
+
+	@DeleteMapping(path = { "/v1/paciente/{pacienteId}/cartaoSaude/{convenioId}" })
+	public ResponseEntity<Paciente> deleteCartaoSaude(@PathVariable Long pacienteId, @PathVariable Long cartaoSaudeId)
+			throws Exception {
+		cartaoSaudeService.delete(pacienteId, cartaoSaudeId);
+		return ResponseEntity.noContent().build();
+	}
+
 }

@@ -11,6 +11,5 @@ public interface EnderecoService {
 	
 	public List<Endereco> update(List<EnderecoRequest> enderecoRequest, Long pacienteId) throws Exception;
 	
-	public void deleteByPacienteId(Long pacienteId);
-
+	public void deleteByPacienteId(Long pacienteId, Long enderecoId) throws Exception;
 }

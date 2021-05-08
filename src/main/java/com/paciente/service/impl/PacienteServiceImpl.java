@@ -136,30 +136,31 @@ public class PacienteServiceImpl implements PacienteService {
 
 	@Override
 	public PacienteResponse updateV2(PutPacienteRequest pacienteRequest, long pacienteId) throws Exception {
-		Paciente paciente = findByPacienteId(pacienteId);
-		BeanUtils.copyProperties(pacienteRequest, paciente, "pacienteId");
-		if (pacienteRequest.getCartaoSaude() != null) {
-			BeanUtils.copyProperties(pacienteRequest.getCartaoSaude(), paciente.getCartaoSaude(), "convenioId");
-		}
-		
-		if (pacienteRequest.getTelefones().size() != paciente.getTelefones().size()) {
-			telefoneService.deleteByPacienteId(pacienteId);
-		} 
-		
-		for (int i = 0; i < pacienteRequest.getTelefones().size(); i++) {
-			BeanUtils.copyProperties(pacienteRequest.getTelefones().get(i), paciente.getTelefones().get(i), "telefoneId");
-		}
-		
-		if (pacienteRequest.getEnderecos().size() != paciente.getEnderecos().size()) {
-			enderecoService.deleteByPacienteId(pacienteId);
-		}
-		
-		for (int i = 0; i < pacienteRequest.getEnderecos().size(); i++) {
-			BeanUtils.copyProperties(pacienteRequest.getEnderecos().get(i), paciente.getEnderecos().get(i), "enderecoId");
-		}
-		
-		Paciente pacienteUpdate = pacienteRepository.save(paciente);
-		return PacienteMapper.toResponse(pacienteUpdate);
+//		Paciente paciente = findByPacienteId(pacienteId);
+//		BeanUtils.copyProperties(pacienteRequest, paciente, "pacienteId");
+//		if (pacienteRequest.getCartaoSaude() != null) {
+//			BeanUtils.copyProperties(pacienteRequest.getCartaoSaude(), paciente.getCartaoSaude(), "convenioId");
+//		}
+//		
+//		if (pacienteRequest.getTelefones().size() != paciente.getTelefones().size()) {
+//			telefoneService.deleteByPacienteId(pacienteId);
+//		} 
+//		
+//		for (int i = 0; i < pacienteRequest.getTelefones().size(); i++) {
+//			BeanUtils.copyProperties(pacienteRequest.getTelefones().get(i), paciente.getTelefones().get(i), "telefoneId");
+//		}
+//		
+//		if (pacienteRequest.getEnderecos().size() != paciente.getEnderecos().size()) {
+//			enderecoService.deleteByPacienteId(pacienteId);
+//		}
+//		
+//		for (int i = 0; i < pacienteRequest.getEnderecos().size(); i++) {
+//			BeanUtils.copyProperties(pacienteRequest.getEnderecos().get(i), paciente.getEnderecos().get(i), "enderecoId");
+//		}
+//		
+//		Paciente pacienteUpdate = pacienteRepository.save(paciente);
+//		return PacienteMapper.toResponse(pacienteUpdate);
+		return null;
 	}
 	
 

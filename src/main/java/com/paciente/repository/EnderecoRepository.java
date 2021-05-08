@@ -8,5 +8,5 @@ import com.paciente.domain.model.Endereco;
 @Repository
 public interface EnderecoRepository extends JpaRepository<Endereco, Long> {
 
-	void deleteByPacientePacienteId(Long pacienteId);
+	void deleteByPacientePacienteId(Long enderecoId);
 }

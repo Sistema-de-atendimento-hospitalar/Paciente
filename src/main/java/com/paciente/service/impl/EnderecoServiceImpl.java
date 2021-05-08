@@ -26,9 +26,10 @@ public class EnderecoServiceImpl implements EnderecoService {
 	public List<Endereco> save(List<Endereco> enderecos) {
 		return enderecoRepository.saveAll(enderecos);
 	}
-
-	public void deleteByPacienteId(Long pacienteId) {
-		enderecoRepository.deleteByPacientePacienteId(pacienteId);
+	
+	public void deleteByPacienteId(Long pacienteId, Long enderecoId) throws Exception {
+		Paciente paciente = pacienteService.findByPacienteId(pacienteId);
+		enderecoRepository.deleteById(enderecoId);
 	}
 
 	@Override
