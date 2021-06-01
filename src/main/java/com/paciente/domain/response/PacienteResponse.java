@@ -5,15 +5,15 @@ import java.util.List;
 
 import org.modelmapper.ModelMapper;
 
+import com.paciente.domain.dto.EnderecoDto;
+import com.paciente.domain.dto.TelefoneDto;
 import com.paciente.domain.model.Paciente;
 import com.paciente.domain.request.CartaoSaudeRequest;
-import com.paciente.domain.request.EnderecoRequest;
-import com.paciente.domain.request.TelefoneRequest;
 
 public class PacienteResponse {
 
 	private Long pacienteId;
-	private Long cpf;
+	private String cpf;
 	private String nome;
 	private String email;
 	private LocalDate dtNascimento;
@@ -21,9 +21,9 @@ public class PacienteResponse {
 	private String rg;
 	private String orgExpedidorRg;
 	private LocalDate emissaoRg;
-	private List<EnderecoRequest> enderecos;
+	private List<EnderecoDto> enderecos;
 	private CartaoSaudeRequest cartaoSaude;
-	private List<TelefoneRequest> telefones;
+	private List<TelefoneDto> telefones;
 	private String deficiencia;
 
 //	public PacienteDto() {
@@ -40,11 +40,6 @@ public class PacienteResponse {
 //		this.orgExpedidoRg = paciente.getOrgExpedidor();
 //		this.emissaoRg = paciente.getEmissaoRg();
 //	}
-	
-
-	public Long getCpf() {
-		return cpf;
-	}
 
 	public Long getPacienteId() {
 		return pacienteId;
@@ -53,8 +48,12 @@ public class PacienteResponse {
 	public void setPacienteId(Long pacienteId) {
 		this.pacienteId = pacienteId;
 	}
-
-	public void setCpf(Long cpf) {
+	
+	public String getCpf() {
+		return cpf;
+	}
+	
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 
@@ -116,11 +115,11 @@ public class PacienteResponse {
 		this.emissaoRg = emissaoRg;
 	}
 
-	public List<EnderecoRequest> getEnderecos() {
+	public List<EnderecoDto> getEnderecos() {
 		return enderecos;
 	}
 
-	public void setEnderecos(List<EnderecoRequest> enderecos) {
+	public void setEnderecos(List<EnderecoDto> enderecos) {
 		this.enderecos = enderecos;
 	}
 
@@ -132,11 +131,11 @@ public class PacienteResponse {
 		this.cartaoSaude = cartaoSaude;
 	}
 
-	public List<TelefoneRequest> getTelefones() {
+	public List<TelefoneDto> getTelefones() {
 		return telefones;
 	}
 
-	public void setTelefones(List<TelefoneRequest> telefones) {
+	public void setTelefones(List<TelefoneDto> telefones) {
 		this.telefones = telefones;
 	}
 	

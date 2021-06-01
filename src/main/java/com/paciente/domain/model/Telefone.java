@@ -1,17 +1,18 @@
 package com.paciente.domain.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.paciente.domain.enumerate.TipoTelefoneEnum;
 
 @Entity
 @Table(name = "t_telefone")
@@ -28,9 +29,9 @@ public class Telefone {
 	@Column(name = "nr_ddd", nullable = false)
 	private Integer numDdd;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "tp_telefone_id")
-	private TipoTelefone tipoTelefone;
+	@Enumerated(EnumType.STRING)
+	@Column(name = "tipo_telefone", columnDefinition = "varchar(15)")
+	private TipoTelefoneEnum tipoTelefone;
 	
 	@ManyToOne
 	@JoinColumn(name = "paciente_id", nullable = false)
@@ -53,13 +54,6 @@ public class Telefone {
 		this.numDdd = numDdd;
 	}
 
-	public TipoTelefone getTipoTelefone() {
-		return tipoTelefone;
-	}
-
-	public void setTipoTelefone(TipoTelefone tipoTelefone) {
-		this.tipoTelefone = tipoTelefone;
-	}
 
 	public Long getTelefoneId() {
 		return telefoneId;
@@ -75,6 +69,14 @@ public class Telefone {
 
 	public void setPaciente(Paciente paciente) {
 		this.paciente = paciente;
+	}
+
+	public TipoTelefoneEnum getTipoTelefone() {
+		return tipoTelefone;
+	}
+
+	public void setTipoTelefone(TipoTelefoneEnum tipoTelefone) {
+		this.tipoTelefone = tipoTelefone;
 	}
 	
 }

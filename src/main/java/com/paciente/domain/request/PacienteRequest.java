@@ -7,6 +7,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.br.CPF;
 import org.modelmapper.ModelMapper;
 
@@ -19,6 +20,7 @@ public class PacienteRequest implements Serializable {
 	@CPF
 	@NotNull(message = "CPF não pode ser nula")
 	@NotBlank(message = "CPF não pode está em branco")
+	@Length(min = 11,  max = 11)
 	private String cpf;
 
 	@NotNull(message = "Nome não pode ser nula")

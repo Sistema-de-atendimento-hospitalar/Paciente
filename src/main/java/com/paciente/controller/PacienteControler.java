@@ -22,14 +22,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.paciente.domain.dto.EnderecoDto;
+import com.paciente.domain.dto.TelefoneDto;
 import com.paciente.domain.model.Endereco;
 import com.paciente.domain.model.Paciente;
 import com.paciente.domain.model.Telefone;
 import com.paciente.domain.request.CartaoSaudeRequest;
-import com.paciente.domain.request.EnderecoRequest;
 import com.paciente.domain.request.PacienteRequest;
 import com.paciente.domain.request.PutPacienteRequest;
-import com.paciente.domain.request.TelefoneRequest;
 import com.paciente.domain.response.PacienteResponse;
 import com.paciente.service.CartaoSaudeService;
 import com.paciente.service.EnderecoService;
@@ -87,14 +87,14 @@ public class PacienteControler {
 
 	@PostMapping("/v1/paciente/{pacienteId}/endereco")
 	@ResponseStatus(HttpStatus.CREATED)
-	public ResponseEntity<List<Endereco>> createAddress(@RequestBody @Valid List<EnderecoRequest> enderecoRequest,
+	public ResponseEntity<List<Endereco>> createAddress(@RequestBody @Valid List<EnderecoDto> enderecoRequest,
 			@PathVariable("pacienteId") Long pacienteId) throws Exception {
 		return ResponseEntity.ok().body(pacienteService.createAddress(enderecoRequest, pacienteId));
 	}
 
 	@PostMapping("/v1/paciente/{pacienteId}/telefone")
 	@ResponseStatus(HttpStatus.CREATED)
-	public ResponseEntity<List<Telefone>> createTelefone(@RequestBody @Valid List<TelefoneRequest> telefoneRequest,
+	public ResponseEntity<List<Telefone>> createTelefone(@RequestBody @Valid List<TelefoneDto> telefoneRequest,
 			@PathVariable("pacienteId") Long pacienteId) throws Exception {
 		return ResponseEntity.ok().body(pacienteService.createTelefone(telefoneRequest, pacienteId));
 	}
@@ -114,13 +114,13 @@ public class PacienteControler {
 	}
 
 	@PutMapping(value = "/v1/paciente/{pacienteId}/endereco")
-	public void updateEndereco(@RequestBody @Valid List<EnderecoRequest> enderecoRequest,
+	public void updateEndereco(@RequestBody @Valid List<EnderecoDto> enderecoRequest,
 			@PathVariable("pacienteId") long pacienteId) throws Exception {
 		enderecoService.update(enderecoRequest, pacienteId);
 	}
 
 	@PutMapping(value = "/v1/paciente/{pacienteId}/telefone")
-	public void updateTelefone(@RequestBody @Valid List<TelefoneRequest> telefoneRequest,
+	public void updateTelefone(@RequestBody @Valid List<TelefoneDto> telefoneRequest,
 			@PathVariable("pacienteId") long pacienteId) throws Exception {
 		telefoneService.update(telefoneRequest, pacienteId);
 	}

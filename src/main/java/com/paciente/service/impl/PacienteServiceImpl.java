@@ -10,6 +10,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import com.paciente.domain.dto.EnderecoDto;
+import com.paciente.domain.dto.TelefoneDto;
 import com.paciente.domain.mapper.EnderecoMapper;
 import com.paciente.domain.mapper.PacienteMapper;
 import com.paciente.domain.mapper.TelefoneMapper;
@@ -18,10 +20,8 @@ import com.paciente.domain.model.Endereco;
 import com.paciente.domain.model.Paciente;
 import com.paciente.domain.model.Telefone;
 import com.paciente.domain.request.CartaoSaudeRequest;
-import com.paciente.domain.request.EnderecoRequest;
 import com.paciente.domain.request.PacienteRequest;
 import com.paciente.domain.request.PutPacienteRequest;
-import com.paciente.domain.request.TelefoneRequest;
 import com.paciente.domain.response.PacienteResponse;
 import com.paciente.repository.PacienteRepository;
 import com.paciente.repository.TipoTelefoneRepository;
@@ -99,7 +99,7 @@ public class PacienteServiceImpl implements PacienteService {
 	}
 
 	@Override
-	public List<Endereco> createAddress(List<EnderecoRequest> enderecoRequest, Long pacienteId) throws Exception {
+	public List<Endereco> createAddress(List<EnderecoDto> enderecoRequest, Long pacienteId) throws Exception {
 		Paciente paciente = findByPacienteId(pacienteId);
 
 		List<Endereco> enderecos = enderecoRequest.stream().map(EnderecoMapper::toModel).collect(Collectors.toList());
@@ -110,7 +110,7 @@ public class PacienteServiceImpl implements PacienteService {
 	}
 
 	@Override
-	public List<Telefone> createTelefone(List<TelefoneRequest> telefoneRequest, Long pacienteId) throws Exception {
+	public List<Telefone> createTelefone(List<TelefoneDto> telefoneRequest, Long pacienteId) throws Exception {
 		Paciente paciente = findByPacienteId(pacienteId);
 		
 		List<Telefone> telefones = telefoneRequest.stream().map(TelefoneMapper::toModel).collect(Collectors.toList());

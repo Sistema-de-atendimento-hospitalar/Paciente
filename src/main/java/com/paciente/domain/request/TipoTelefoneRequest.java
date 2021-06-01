@@ -21,7 +21,4 @@ public class TipoTelefoneRequest {
 	public void setDescTipoTelefone(String descTipoTelefone) {
 		this.descTipoTelefone = descTipoTelefone;
 	}
-
-	
-
 }

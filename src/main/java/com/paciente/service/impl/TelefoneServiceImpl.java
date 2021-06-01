@@ -6,11 +6,10 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+import com.paciente.domain.dto.TelefoneDto;
 import com.paciente.domain.mapper.TelefoneMapper;
 import com.paciente.domain.model.Paciente;
 import com.paciente.domain.model.Telefone;
-import com.paciente.domain.request.TelefoneRequest;
 import com.paciente.repository.TelefoneRepository;
 import com.paciente.service.PacienteService;
 import com.paciente.service.TelefoneService;
@@ -34,7 +33,7 @@ public class TelefoneServiceImpl implements TelefoneService {
 	}
 
 	@Override
-	public List<Telefone> update(List<TelefoneRequest> telefoneRequest, Long pacienteId) throws Exception {
+	public List<Telefone> update(List<TelefoneDto> telefoneRequest, Long pacienteId) throws Exception {
 		Paciente paciente = pacienteService.findByPacienteId(pacienteId);
 		List<Telefone> telefones = telefoneRequest.stream().map(TelefoneMapper::toModel).map(telefone -> {
 			telefone.setPaciente(paciente);
