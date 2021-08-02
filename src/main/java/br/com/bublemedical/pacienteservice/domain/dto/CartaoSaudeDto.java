@@ -8,7 +8,7 @@ public class CartaoSaudeDto {
 	private String tipoContrato;
 	private String rede;
 	private Long numeroCarteira;
-	private LocalDate validade;
+	private LocalDate dtValidade;
 
 	public String getConvenio() {
 		return convenio;
@@ -42,12 +42,12 @@ public class CartaoSaudeDto {
 		this.numeroCarteira = numeroCarteira;
 	}
 
-	public LocalDate getValidade() {
-		return validade;
+	public LocalDate getDtValidade() {
+		return dtValidade;
 	}
 
-	public void setValidade(LocalDate validade) {
-		this.validade = validade;
+	public void setDtValidade(LocalDate validade) {
+		this.dtValidade = validade;
 	}
 
 }

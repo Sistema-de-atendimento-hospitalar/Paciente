@@ -32,7 +32,7 @@ public class CartaoSaude {
 	private Long numeroCarteira;
 
 	@Column(name = "validade", nullable = false)
-	private LocalDate validade;
+	private LocalDate dtValidade;
 
 	public Long getConvenioId() {
 		return convenioId;
@@ -74,12 +74,12 @@ public class CartaoSaude {
 		this.numeroCarteira = numeroCarteira;
 	}
 
-	public LocalDate getValidade() {
-		return validade;
+	public LocalDate getDtValidade() {
+		return dtValidade;
 	}
 
-	public void setValidade(LocalDate validade) {
-		this.validade = validade;
+	public void setDtValidade(LocalDate validade) {
+		this.dtValidade = validade;
 	}
 
 }

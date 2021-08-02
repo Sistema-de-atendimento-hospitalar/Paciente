@@ -67,11 +67,6 @@ public class PacienteResponse {
 	}
 
 	public String getEmail() {
-		String part1 = email.substring(0, 4);
-		String part2 = email.substring(email.length() - 4, email.length());
-		
-		email = email.replace(part1, "*".repeat(4));
-		email = email.replace(part2, "*".repeat(4));
 		return email;
 	}
 

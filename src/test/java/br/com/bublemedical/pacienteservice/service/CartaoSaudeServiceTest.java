@@ -1,4 +1,4 @@
-package com.paciente.paciente.service;
+package br.com.bublemedical.pacienteservice.service;
 
 
 import org.junit.jupiter.api.Test;

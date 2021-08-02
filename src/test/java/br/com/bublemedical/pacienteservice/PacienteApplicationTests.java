@@ -1,4 +1,4 @@
-package com.paciente.paciente;
+package br.com.bublemedical.pacienteservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

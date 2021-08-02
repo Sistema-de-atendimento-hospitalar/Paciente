@@ -30,7 +30,7 @@ public class CartaoSaudeRequest implements Serializable {
 
 	@NotNull(message = "A validade não pode ser nulo")
 	@Future
-	private LocalDate validade;
+	private LocalDate dtValidade;
 	
 	public Long getConvenioId() {
 		return convenioId;
@@ -72,12 +72,12 @@ public class CartaoSaudeRequest implements Serializable {
 		this.numeroCarteira = numeroCarteira;
 	}
 
-	public LocalDate getValidade() {
-		return validade;
+	public LocalDate getDtValidade() {
+		return dtValidade;
 	}
 
-	public void setValidade(LocalDate validade) {
-		this.validade = validade;
+	public void setDtValidade(LocalDate validade) {
+		this.dtValidade = validade;
 	}
 
 }

@@ -9,8 +9,8 @@
 		<version>2.4.3</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.paciente</groupId>
-	<artifactId>paciente</artifactId>
+	<groupId>br.com.bublemedical.pacienteservice</groupId>
+	<artifactId>paciente-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>paciente</name>
 	<description>Cadastro paciente</description>
