@@ -79,12 +79,12 @@ public class ApiExceptionHandle extends ResponseEntityExceptionHandler {
 		return handleExceptionInternal(ex, wrapper, headers, status, request);
 	}
 
-//	@ExceptionHandler(BusinessException.class)
-//	public ResponseEntity<Object> handleBadRequest(BusinessException ex, WebRequest request) {
-//		HttpStatus status = HttpStatus.BAD_REQUEST;
-//		Wrapper wrapper = createWrapper(status, ProblemType.BUSINESS_EXCEPTION, ex.getMessage());
-//		return this.handleExceptionInternal(ex, wrapper, new HttpHeaders(), status, request);
-//	}
+	@ExceptionHandler(BusinessException.class)
+	public ResponseEntity<Object> handleBadRequest(BusinessException ex, WebRequest request) {
+		HttpStatus status = HttpStatus.BAD_REQUEST;
+		Wrapper wrapper = createWrapper(status, ProblemType.BUSINESS_EXCEPTION, ex.getMessage(), request);
+		return this.handleExceptionInternal(ex, wrapper, new HttpHeaders(), status, request);
+	}
 
 	@ExceptionHandler(NotFoundException.class)
 	public ResponseEntity<Object> handleNotFound(NotFoundException ex, WebRequest request) {

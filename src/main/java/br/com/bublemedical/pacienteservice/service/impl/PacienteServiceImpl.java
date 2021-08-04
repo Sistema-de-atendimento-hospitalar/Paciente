@@ -24,8 +24,8 @@ import br.com.bublemedical.pacienteservice.domain.request.PacienteRequest;
 import br.com.bublemedical.pacienteservice.domain.request.PutPacienteRequest;
 import br.com.bublemedical.pacienteservice.domain.response.PacienteResponse;
 import br.com.bublemedical.pacienteservice.domain.response.TokenUserResponse;
+import br.com.bublemedical.pacienteservice.exception.BusinessException;
 import br.com.bublemedical.pacienteservice.repository.PacienteRepository;
-import br.com.bublemedical.pacienteservice.repository.TipoTelefoneRepository;
 import br.com.bublemedical.pacienteservice.service.CartaoSaudeService;
 import br.com.bublemedical.pacienteservice.service.EnderecoService;
 import br.com.bublemedical.pacienteservice.service.PacienteService;
@@ -45,9 +45,6 @@ public class PacienteServiceImpl implements PacienteService {
 	
 	@Autowired
 	private TelefoneService telefoneService;
-	
-	@Autowired
-	private TipoTelefoneRepository tipoTelefoneRepository;
 
 	@Override
 	public PacienteResponse findByCpf(String cpf) {
@@ -71,7 +68,7 @@ public class PacienteServiceImpl implements PacienteService {
 		try { 
 			paciente = pacienteRepository.save(paciente);
 		} catch (DataIntegrityViolationException e) {
-			throw new Exception("constraint violada", e);
+			throw new BusinessException("CPF ou email já cadastrado", e);
 		}
 		return PacienteResponse.toDto(paciente);
 	}
@@ -80,9 +77,14 @@ public class PacienteServiceImpl implements PacienteService {
 	public PacienteResponse update(PacienteRequest pacienteRequest, Long pacienteId) throws Exception {
 		Paciente paciente = findByPacienteId(pacienteId);
 		BeanUtils.copyProperties(pacienteRequest, paciente, "pacienteId");
-		Paciente pacienteUpdate = pacienteRepository.save(paciente);
+		
+		try { 
+			paciente = pacienteRepository.save(paciente);
+		} catch (DataIntegrityViolationException e) {
+			throw new BusinessException("CPF ou email já cadastrado", e);
+		}
 
-		return PacienteMapper.toResponse(pacienteUpdate);
+		return PacienteMapper.toResponse(paciente);
 	}
 
 	@Override
