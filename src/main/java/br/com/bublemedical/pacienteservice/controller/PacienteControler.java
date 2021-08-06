@@ -54,13 +54,13 @@ public class PacienteControler {
 	private CartaoSaudeService cartaoSaudeService;
 
 	@GetMapping("/v1/paciente")
-	public Page<PacienteResponse> findAll(@RequestParam(required = false) String nome,
+	public Object findAll(@RequestParam(required = false) String nome,
 			@RequestParam(required = false, defaultValue = "0") int pagina,
 			@RequestParam(required = false, defaultValue = "20") int quantidade,
 			@RequestParam(required = false, defaultValue = "nome") String campoOrdenado,
 			@RequestParam(required = false, defaultValue = "") String directionType) {
 		Direction direction = "desc".equalsIgnoreCase(directionType) ? Direction.DESC : Direction.ASC;
-		return pacienteService.findAll(PageRequest.of(pagina, quantidade, Sort.by(direction, campoOrdenado)));
+		return ResponseEntity.ok().body(pacienteService.findAll(PageRequest.of(pagina, quantidade, Sort.by(direction, campoOrdenado))));
 	}
 
 	@GetMapping(path = { "/v1/paciente/cpf/{cpf}" })
