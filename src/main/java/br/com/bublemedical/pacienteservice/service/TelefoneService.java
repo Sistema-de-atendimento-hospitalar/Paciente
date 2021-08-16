@@ -10,5 +10,5 @@ public interface TelefoneService {
 	
 	public void deleteByPacienteId(Long pacienteId, Long telefoneId);
 
-	List<Telefone> update(List<TelefoneDto> telefoneRequest, Long pacienteId) throws Exception;
+	List<Telefone> update(List<TelefoneDto> telefoneRequest, Long pacienteId);
 }

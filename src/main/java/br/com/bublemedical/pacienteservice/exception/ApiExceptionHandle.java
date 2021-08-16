@@ -27,7 +27,6 @@ import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import com.fasterxml.jackson.databind.exc.PropertyBindingException;
 
 import br.com.bublemedical.pacienteservice.domain.Wrapper;
-import javassist.NotFoundException;
 
 @ControllerAdvice
 public class ApiExceptionHandle extends ResponseEntityExceptionHandler {
@@ -79,12 +78,12 @@ public class ApiExceptionHandle extends ResponseEntityExceptionHandler {
 		return handleExceptionInternal(ex, wrapper, headers, status, request);
 	}
 
-//	@ExceptionHandler(BusinessException.class)
-//	public ResponseEntity<Object> handleBadRequest(BusinessException ex, WebRequest request) {
-//		HttpStatus status = HttpStatus.BAD_REQUEST;
-//		Wrapper wrapper = createWrapper(status, ProblemType.BUSINESS_EXCEPTION, ex.getMessage());
-//		return this.handleExceptionInternal(ex, wrapper, new HttpHeaders(), status, request);
-//	}
+	@ExceptionHandler(BusinessException.class)
+	public ResponseEntity<Object> handleBadRequest(BusinessException ex, WebRequest request) {
+		HttpStatus status = HttpStatus.BAD_REQUEST;
+		Wrapper wrapper = createWrapper(status, ProblemType.BUSINESS_EXCEPTION, ex.getMessage(), request);
+		return this.handleExceptionInternal(ex, wrapper, new HttpHeaders(), status, request);
+	}
 
 	@ExceptionHandler(NotFoundException.class)
 	public ResponseEntity<Object> handleNotFound(NotFoundException ex, WebRequest request) {
@@ -117,6 +116,7 @@ public class ApiExceptionHandle extends ResponseEntityExceptionHandler {
 			return handleMethodArgumentTypeMismatch((MethodArgumentTypeMismatchException) ex, headers, status, request);
 		}
 
+		ex.printStackTrace();
 		return super.handleTypeMismatch(ex, headers, status, request);
 	}
 
@@ -161,6 +161,7 @@ public class ApiExceptionHandle extends ResponseEntityExceptionHandler {
 			body = createWrapper((String) body, status.value(), INTERNAL_ERROR, request);
 		}
 
+		ex.printStackTrace();
 		return super.handleExceptionInternal(ex, body, headers, status, request);
 	}
 

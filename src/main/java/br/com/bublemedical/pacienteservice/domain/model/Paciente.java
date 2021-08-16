@@ -173,6 +173,14 @@ public class Paciente {
 		this.deficiencia = deficiencia;
 	}
 
+	public String getEstadoExpedidor() {
+		return estadoExpedidor;
+	}
+
+	public void setEstadoExpedidor(String estadoExpedidor) {
+		this.estadoExpedidor = estadoExpedidor;
+	}
+
 	public static Paciente toModel(PacienteResponse paciente) {
 		ModelMapper mapper = new ModelMapper();
 		return mapper.map(paciente, Paciente.class);

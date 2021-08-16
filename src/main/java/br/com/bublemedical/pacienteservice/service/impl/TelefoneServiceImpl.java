@@ -29,11 +29,12 @@ public class TelefoneServiceImpl implements TelefoneService {
 	}
 
 	public void deleteByPacienteId(Long pacienteId, Long telefoneId) {
-		telefoneRepository.deleteByPacientePacienteId(pacienteId);
+		Paciente paciente = pacienteService.findByPacienteId(pacienteId);
+		telefoneRepository.deleteById(telefoneId);
 	}
 
 	@Override
-	public List<Telefone> update(List<TelefoneDto> telefoneRequest, Long pacienteId) throws Exception {
+	public List<Telefone> update(List<TelefoneDto> telefoneRequest, Long pacienteId) {
 		Paciente paciente = pacienteService.findByPacienteId(pacienteId);
 		List<Telefone> telefones = telefoneRequest.stream().map(TelefoneMapper::toModel).map(telefone -> {
 			telefone.setPaciente(paciente);
