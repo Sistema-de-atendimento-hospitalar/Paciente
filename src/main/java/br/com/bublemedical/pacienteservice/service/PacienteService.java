@@ -9,6 +9,7 @@ import org.springframework.data.domain.PageRequest;
 
 import br.com.bublemedical.pacienteservice.domain.dto.EnderecoDto;
 import br.com.bublemedical.pacienteservice.domain.dto.TelefoneDto;
+import br.com.bublemedical.pacienteservice.domain.model.CartaoSaude;
 import br.com.bublemedical.pacienteservice.domain.model.Endereco;
 import br.com.bublemedical.pacienteservice.domain.model.Paciente;
 import br.com.bublemedical.pacienteservice.domain.model.Telefone;
@@ -22,25 +23,25 @@ public interface PacienteService {
 	
 	Page<PacienteResponse> findAll(PageRequest pageable);
 	
-	PacienteResponse findById(Long pacienteId) throws Exception;
+	PacienteResponse findById(Long pacienteId);
 
 	PacienteResponse findByCpf(String cpf);
 	
-	PacienteResponse save(PacienteRequest pacienteRequest) throws Exception;
+	PacienteResponse save(PacienteRequest pacienteRequest);
 	
-	PacienteResponse update(PacienteRequest pacienteRequest, Long pacienteId) throws Exception;
+	PacienteResponse update(PacienteRequest pacienteRequest, Long pacienteId);
 	
-	void delete(Long pacienteId) throws Exception;
+	void delete(Long pacienteId);
 
-	List<Endereco> createAddress(@Valid List<EnderecoDto> enderecoRequest, Long pacienteId) throws Exception;
+	List<Endereco> createAddress(@Valid List<EnderecoDto> enderecoRequest, Long pacienteId);
 
-	List<Telefone> createTelefone(@Valid List<TelefoneDto> telefoneRequest, Long pacienteId) throws Exception;
+	List<Telefone> createTelefone(@Valid List<TelefoneDto> telefoneRequest, Long pacienteId);
 
-	void createCartaoSaude(@Valid CartaoSaudeRequest cartaoSaudeRequest, Long pacienteId) throws Exception;
+	CartaoSaude createCartaoSaude(@Valid CartaoSaudeRequest cartaoSaudeRequest, Long pacienteId);
 
-	PacienteResponse updateV2(PutPacienteRequest pacienteRequest, long pacienteId) throws Exception;
+	PacienteResponse updateV2(PutPacienteRequest pacienteRequest, long pacienteId);
 	
-	Paciente findByPacienteId(Long pacienteId) throws Exception;
+	Paciente findByPacienteId(Long pacienteId);
 	
 	TokenUserResponse verifyExistsCpf(String cpf);
 

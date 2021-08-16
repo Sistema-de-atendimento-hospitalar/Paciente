@@ -25,6 +25,7 @@ import br.com.bublemedical.pacienteservice.domain.request.PutPacienteRequest;
 import br.com.bublemedical.pacienteservice.domain.response.PacienteResponse;
 import br.com.bublemedical.pacienteservice.domain.response.TokenUserResponse;
 import br.com.bublemedical.pacienteservice.exception.BusinessException;
+import br.com.bublemedical.pacienteservice.exception.NotFoundException;
 import br.com.bublemedical.pacienteservice.repository.PacienteRepository;
 import br.com.bublemedical.pacienteservice.service.CartaoSaudeService;
 import br.com.bublemedical.pacienteservice.service.EnderecoService;
@@ -42,7 +43,7 @@ public class PacienteServiceImpl implements PacienteService {
 
 	@Autowired
 	private EnderecoService enderecoService;
-	
+
 	@Autowired
 	private TelefoneService telefoneService;
 
@@ -51,7 +52,7 @@ public class PacienteServiceImpl implements PacienteService {
 		PacienteResponse pacienteResponse = null;
 		Paciente paciente = pacienteRepository.findByCpf(cpf).orElse(null);
 		if (paciente != null) {
-			pacienteResponse = PacienteResponse.toDto(paciente); 
+			pacienteResponse = PacienteResponse.toDto(paciente);
 		}
 		return pacienteResponse;
 	}
@@ -62,10 +63,10 @@ public class PacienteServiceImpl implements PacienteService {
 	}
 
 	@Override
-	public PacienteResponse save(PacienteRequest pacienteRequest) throws Exception {
+	public PacienteResponse save(PacienteRequest pacienteRequest) {
 		Paciente paciente = PacienteRequest.toModel(pacienteRequest);
 
-		try { 
+		try {
 			paciente = pacienteRepository.save(paciente);
 		} catch (DataIntegrityViolationException e) {
 			throw new BusinessException("CPF ou email já cadastrado", e);
@@ -74,11 +75,11 @@ public class PacienteServiceImpl implements PacienteService {
 	}
 
 	@Override
-	public PacienteResponse update(PacienteRequest pacienteRequest, Long pacienteId) throws Exception {
+	public PacienteResponse update(PacienteRequest pacienteRequest, Long pacienteId) {
 		Paciente paciente = findByPacienteId(pacienteId);
 		BeanUtils.copyProperties(pacienteRequest, paciente, "pacienteId");
-		
-		try { 
+
+		try {
 			paciente = pacienteRepository.save(paciente);
 		} catch (DataIntegrityViolationException e) {
 			throw new BusinessException("CPF ou email já cadastrado", e);
@@ -88,7 +89,7 @@ public class PacienteServiceImpl implements PacienteService {
 	}
 
 	@Override
-	public void delete(Long pacienteId) throws Exception {
+	public void delete(Long pacienteId) {
 		PacienteResponse pacienteDto = findById(pacienteId);
 		if (pacienteDto != null) {
 			pacienteRepository.deleteById(pacienteId);
@@ -97,12 +98,13 @@ public class PacienteServiceImpl implements PacienteService {
 	}
 
 	@Override
-	public PacienteResponse findById(Long pacienteId) throws Exception {
-		return pacienteRepository.findById(pacienteId).map(PacienteResponse::toDto).orElseThrow(Exception::new);
+	public PacienteResponse findById(Long pacienteId) {
+		return pacienteRepository.findById(pacienteId).map(PacienteResponse::toDto).orElseThrow(
+				() -> new NotFoundException(String.format("Paciente com código %d não encontrado", pacienteId)));
 	}
 
 	@Override
-	public List<Endereco> createAddress(List<EnderecoDto> enderecoRequest, Long pacienteId) throws Exception {
+	public List<Endereco> createAddress(List<EnderecoDto> enderecoRequest, Long pacienteId) {
 		Paciente paciente = findByPacienteId(pacienteId);
 
 		List<Endereco> enderecos = enderecoRequest.stream().map(EnderecoMapper::toModel).collect(Collectors.toList());
@@ -113,32 +115,39 @@ public class PacienteServiceImpl implements PacienteService {
 	}
 
 	@Override
-	public List<Telefone> createTelefone(List<TelefoneDto> telefoneRequest, Long pacienteId) throws Exception {
+	public List<Telefone> createTelefone(List<TelefoneDto> telefoneRequest, Long pacienteId) {
 		Paciente paciente = findByPacienteId(pacienteId);
-		
+
 		List<Telefone> telefones = telefoneRequest.stream().map(TelefoneMapper::toModel).collect(Collectors.toList());
 		telefones.forEach(telefone -> telefone.setPaciente(paciente));
-		
+
 		return telefoneService.save(telefones);
 	}
 
 	@Override
-	public void createCartaoSaude(CartaoSaudeRequest cartaoSaudeRequest, Long pacienteId) throws Exception {
-		CartaoSaude cartaoSaude = cartaoSaudeService.save(cartaoSaudeRequest);
+	public CartaoSaude createCartaoSaude(CartaoSaudeRequest cartaoSaudeRequest, Long pacienteId) {
+		CartaoSaude cartaoSaude;
 
 		Paciente paciente = findByPacienteId(pacienteId);
+		try {
+			cartaoSaude = cartaoSaudeService.save(cartaoSaudeRequest);
+		} catch (DataIntegrityViolationException e) {
+			throw new BusinessException("Cartão de saúde já cadastrado para este paciente", e);
+		}
+
 		paciente.setCartaoSaude(cartaoSaude);
-
 		pacienteRepository.save(paciente);
+		return cartaoSaude;
 	}
 
 	@Override
-	public Paciente findByPacienteId(Long pacienteId) throws Exception {
-		return pacienteRepository.findById(pacienteId).orElseThrow(Exception::new);
+	public Paciente findByPacienteId(Long pacienteId) {
+		return pacienteRepository.findById(pacienteId).orElseThrow(
+				() -> new NotFoundException(String.format("Paciente com código %d não encontrado", pacienteId)));
 	}
 
 	@Override
-	public PacienteResponse updateV2(PutPacienteRequest pacienteRequest, long pacienteId) throws Exception {
+	public PacienteResponse updateV2(PutPacienteRequest pacienteRequest, long pacienteId) {
 //		Paciente paciente = findByPacienteId(pacienteId);
 //		BeanUtils.copyProperties(pacienteRequest, paciente, "pacienteId");
 //		if (pacienteRequest.getCartaoSaude() != null) {
@@ -171,6 +180,5 @@ public class PacienteServiceImpl implements PacienteService {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
 
 }

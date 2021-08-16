@@ -27,13 +27,13 @@ public class EnderecoServiceImpl implements EnderecoService {
 		return enderecoRepository.saveAll(enderecos);
 	}
 	
-	public void deleteByPacienteId(Long pacienteId, Long enderecoId) throws Exception {
+	public void deleteByPacienteId(Long pacienteId, Long enderecoId) {
 		Paciente paciente = pacienteService.findByPacienteId(pacienteId);
 		enderecoRepository.deleteById(enderecoId);
 	}
 
 	@Override
-	public List<Endereco> update(List<EnderecoDto> enderecoRequest, Long pacienteId) throws Exception {
+	public List<Endereco> update(List<EnderecoDto> enderecoRequest, Long pacienteId) {
 		Paciente paciente = pacienteService.findByPacienteId(pacienteId);
 		List<Endereco> enderecos = enderecoRequest.stream().map(EnderecoMapper::toModel).map(endereco -> {
 			endereco.setPaciente(paciente);

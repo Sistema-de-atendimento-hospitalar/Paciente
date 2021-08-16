@@ -6,10 +6,10 @@ import br.com.bublemedical.pacienteservice.domain.request.CartaoSaudeRequest;
 
 public interface CartaoSaudeService {
 	
-	CartaoSaude save(CartaoSaudeRequest cartaoSaudeRequest) throws Exception;
+	CartaoSaude save(CartaoSaudeRequest cartaoSaudeRequest);
 	
-	public  CartaoSaude update(CartaoSaudeRequest cartaoSaudeRequest, Long pacienteId) throws Exception;
+	public  CartaoSaude update(CartaoSaudeRequest cartaoSaudeRequest, Long pacienteId);
 	
-	void delete(Long cartaoSaudeId, Long pacienteId) throws Exception;
+	void delete(Long pacienteId, Long cartaoSaudeId);
 
 }

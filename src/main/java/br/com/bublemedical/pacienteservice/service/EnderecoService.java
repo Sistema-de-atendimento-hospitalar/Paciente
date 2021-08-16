@@ -9,7 +9,7 @@ public interface EnderecoService {
 
 	public List<Endereco> save(List<Endereco> enderecos);
 	
-	public List<Endereco> update(List<EnderecoDto> enderecoRequest, Long pacienteId) throws Exception;
+	public List<Endereco> update(List<EnderecoDto> enderecoRequest, Long pacienteId);
 	
-	public void deleteByPacienteId(Long pacienteId, Long enderecoId) throws Exception;
+	public void deleteByPacienteId(Long pacienteId, Long enderecoId);
 }
