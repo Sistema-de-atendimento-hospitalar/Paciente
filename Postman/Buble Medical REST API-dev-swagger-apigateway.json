@@ -1,0 +1,3892 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "\"Spring Boot REST API\"",
+        "version": "1.0.0",
+        "title": "Buble Medical REST API",
+        "license": {
+            "name": "Apache License Version 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0\""
+        }
+    },
+    "host": "xax2jzjto3.execute-api.us-east-2.amazonaws.com",
+    "basePath": "/dev",
+    "tags": [{
+            "name": "buble-medical-controler",
+            "description": "Buble Medical Controler"
+        },
+        {
+            "name": "paciente-controler",
+            "description": "Paciente Controler"
+        }
+    ],
+    "schemes": [
+        "https"
+    ],
+    "paths": {
+        "/v1/autorization/token": {
+            "post": {
+                "operationId": "createTokenUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "in": "body",
+                    "name": "TokenRequest",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/definitions/TokenRequest"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "200 response",
+                        "headers": {
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            },
+                            "integration.response.header.Access-Control-Allow-Headers": {
+                                "type": "string"
+                            },
+                            "ntegration.response.header.Access-Control-Allow-Methods": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "201 response",
+                        "headers": {
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "400 response"
+                    },
+                    "401": {
+                        "description": "401 response"
+                    },
+                    "403": {
+                        "description": "403 response"
+                    },
+                    "404": {
+                        "description": "404 response"
+                    },
+                    "422": {
+                        "description": "422 response"
+                    },
+                    "500": {
+                        "description": "500 response"
+                    }
+                },
+                "x-amazon-apigateway-integration": {
+                    "httpMethod": "POST",
+                    "uri": "http://13.59.227.206:32769/notification/v1/autorization/token",
+                    "responses": {
+                        "201": {
+                            "statusCode": "201",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Methods": "integration.response.header.Access-Control-Allow-Methods",
+                                "method.response.header.Access-Control-Allow-Headers": "integration.response.header.Access-Control-Allow-Headers",
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            }
+                        },
+                        "default": {
+                            "statusCode": "200",
+                            "responseParameters": {
+                                "method.response.header.integration.response.header.Access-Control-Allow-Headers": "integration.response.header.Access-Control-Allow-Headers",
+                                "method.response.header.Access-Control-Allow-Origin": "'*'",
+                                "method.response.header.ntegration.response.header.Access-Control-Allow-Methods": "integration.response.header.Access-Control-Allow-Methods"
+                            }
+                        }
+                    },
+                    "passthroughBehavior": "when_no_match",
+                    "type": "http"
+                }
+            },
+            "options": {
+                "consumes": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 response",
+                        "headers": {
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "x-amazon-apigateway-integration": {
+                    "responses": {
+                        "default": {
+                            "statusCode": "200",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,POST'",
+                                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            }
+                        }
+                    },
+                    "requestTemplates": {
+                        "application/json": "{\"statusCode\": 200}"
+                    },
+                    "passthroughBehavior": "when_no_match",
+                    "type": "mock"
+                }
+            }
+        },
+        "/v1/autorization/token/valid": {
+            "post": {
+                "operationId": "validTokenUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "in": "body",
+                    "name": "ValidarTokenRequest",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/definitions/ValidarTokenRequest"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "200 response",
+                        "headers": {
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "201 response"
+                    },
+                    "400": {
+                        "description": "400 response",
+                        "headers": {
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            },
+                            "integration.response.header.Access-Control-Allow-Headers": {
+                                "type": "string"
+                            },
+                            "integration.response.header.Access-Control-Allow-Methods": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "401 response"
+                    },
+                    "403": {
+                        "description": "403 response"
+                    },
+                    "404": {
+                        "description": "404 response"
+                    }
+                },
+                "x-amazon-apigateway-integration": {
+                    "httpMethod": "POST",
+                    "uri": "http://13.59.227.206:32769/notification/v1/autorization/token/valid",
+                    "responses": {
+                        "400": {
+                            "statusCode": "400",
+                            "responseParameters": {
+                                "method.response.header.integration.response.header.Access-Control-Allow-Headers": "integration.response.header.Access-Control-Allow-Headers",
+                                "method.response.header.Access-Control-Allow-Origin": "'*'",
+                                "method.response.header.integration.response.header.Access-Control-Allow-Methods": "integration.response.header.Access-Control-Allow-Methods"
+                            }
+                        },
+                        "default": {
+                            "statusCode": "200",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Methods": "integration.response.header.Access-Control-Allow-Methods",
+                                "method.response.header.Access-Control-Allow-Headers": "integration.response.header.Access-Control-Allow-Headers",
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            }
+                        }
+                    },
+                    "passthroughBehavior": "when_no_match",
+                    "type": "http"
+                }
+            },
+            "options": {
+                "consumes": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 response",
+                        "headers": {
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "x-amazon-apigateway-integration": {
+                    "responses": {
+                        "default": {
+                            "statusCode": "200",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,POST'",
+                                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            }
+                        }
+                    },
+                    "requestTemplates": {
+                        "application/json": "{\"statusCode\": 200}"
+                    },
+                    "passthroughBehavior": "when_no_match",
+                    "type": "mock"
+                }
+            }
+        },
+        "/v1/paciente": {
+            "get": {
+                "tags": [
+                    "paciente-controler"
+                ],
+                "summary": "findAll",
+                "operationId": "findAllUsingGET",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                        "name": "directionType",
+                        "in": "query",
+                        "description": "directionType",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "nome",
+                        "in": "query",
+                        "description": "nome",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "quantidade",
+                        "in": "query",
+                        "description": "quantidade",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "pagina",
+                        "in": "query",
+                        "description": "pagina",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "campoOrdenado",
+                        "in": "query",
+                        "description": "campoOrdenado",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/MODEL3fbdbe"
+                        },
+                        "headers": {
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "x-amazon-apigateway-integration": {
+                    "httpMethod": "GET",
+                    "uri": "http://13.59.227.206:32773/pre-cadastro/v1/paciente",
+                    "responses": {
+                        "default": {
+                            "statusCode": "200",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            }
+                        }
+                    },
+                    "passthroughBehavior": "when_no_match",
+                    "type": "http"
+                }
+            },
+            "post": {
+                "tags": [
+                    "paciente-controler"
+                ],
+                "summary": "create",
+                "operationId": "createUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "in": "body",
+                    "name": "PacienteRequest",
+                    "description": "pacienteRequest",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/definitions/PacienteRequest"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/PacienteResponse"
+                        },
+                        "headers": {
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "201 response",
+                        "headers": {
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "400 response"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "422": {
+                        "description": "422 response",
+                        "headers": {
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "500 response"
+                    }
+                },
+                "x-amazon-apigateway-integration": {
+                    "httpMethod": "POST",
+                    "uri": "http://13.59.227.206:32773/pre-cadastro/v1/paciente",
+                    "responses": {
+                        "400": {
+                            "statusCode": "422",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Methods": "integration.response.header.Access-Control-Allow-Methods",
+                                "method.response.header.Access-Control-Allow-Headers": "integration.response.header.Access-Control-Allow-Headers",
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            }
+                        },
+                        "default": {
+                            "statusCode": "200",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Methods": "integration.response.header.Access-Control-Allow-Methods",
+                                "method.response.header.Access-Control-Allow-Headers": "integration.response.header.Access-Control-Allow-Headers",
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            }
+                        }
+                    },
+                    "passthroughBehavior": "when_no_match",
+                    "type": "http"
+                }
+            },
+            "options": {
+                "consumes": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 response",
+                        "headers": {
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "x-amazon-apigateway-integration": {
+                    "responses": {
+                        "default": {
+                            "statusCode": "200",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Methods": "'GET,OPTIONS,POST'",
+                                "method.response.header.Access-Control-Allow-Headers": "'*'",
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            }
+                        }
+                    },
+                    "requestTemplates": {
+                        "application/json": "{\"statusCode\": 200}"
+                    },
+                    "passthroughBehavior": "when_no_match",
+                    "type": "mock"
+                }
+            }
+        },
+        "/v1/paciente/cpf/{cpf}": {
+            "get": {
+                "tags": [
+                    "paciente-controler"
+                ],
+                "summary": "findByCpf",
+                "operationId": "findByCpfUsingGET",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "name": "cpf",
+                    "in": "path",
+                    "description": "cpf",
+                    "required": true,
+                    "type": "string"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/PacienteResponse"
+                        },
+                        "headers": {
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "x-amazon-apigateway-integration": {
+                    "httpMethod": "GET",
+                    "uri": "http://13.59.227.206:32773/pre-cadastro/v1/paciente/cpf/{cpf}",
+                    "responses": {
+                        "default": {
+                            "statusCode": "200",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            }
+                        }
+                    },
+                    "requestParameters": {
+                        "integration.request.path.cpf": "method.request.path.cpf"
+                    },
+                    "passthroughBehavior": "when_no_match",
+                    "type": "http"
+                }
+            },
+            "options": {
+                "consumes": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 response",
+                        "headers": {
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "x-amazon-apigateway-integration": {
+                    "responses": {
+                        "default": {
+                            "statusCode": "200",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Methods": "'GET,OPTIONS'",
+                                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            }
+                        }
+                    },
+                    "requestTemplates": {
+                        "application/json": "{\"statusCode\": 200}"
+                    },
+                    "passthroughBehavior": "when_no_match",
+                    "type": "mock"
+                }
+            }
+        },
+        "/v1/paciente/cpf/{cpf}/verify": {
+            "get": {
+                "tags": [
+                    "paciente-controler"
+                ],
+                "summary": "verifyExistsCpf",
+                "operationId": "verifyExistsCpfUsingGET",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "name": "cpf",
+                    "in": "path",
+                    "description": "cpf",
+                    "required": true,
+                    "type": "string"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/TokenUserResponse"
+                        },
+                        "headers": {
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "204 response",
+                        "headers": {
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "x-amazon-apigateway-integration": {
+                    "httpMethod": "GET",
+                    "uri": "http://13.59.227.206:32773/pre-cadastro/v1/paciente/cpf/{cpf}/verify",
+                    "responses": {
+                        "204": {
+                            "statusCode": "204",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Methods": "integration.response.header.Access-Control-Allow-Methods",
+                                "method.response.header.Access-Control-Allow-Headers": "integration.response.header.Access-Control-Allow-Headers",
+                                "method.response.header.Access-Control-Allow-Origin": "integration.response.header.Access-Control-Allow-Origin"
+                            }
+                        },
+                        "default": {
+                            "statusCode": "200",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Methods": "integration.response.header.Access-Control-Allow-Methods",
+                                "method.response.header.Access-Control-Allow-Headers": "integration.response.header.Access-Control-Allow-Headers",
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            }
+                        }
+                    },
+                    "requestParameters": {
+                        "integration.request.path.cpf": "method.request.path.cpf"
+                    },
+                    "passthroughBehavior": "when_no_match",
+                    "type": "http"
+                }
+            },
+            "options": {
+                "consumes": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 response",
+                        "headers": {
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "x-amazon-apigateway-integration": {
+                    "responses": {
+                        "default": {
+                            "statusCode": "200",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Methods": "'GET,OPTIONS'",
+                                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            }
+                        }
+                    },
+                    "requestTemplates": {
+                        "application/json": "{\"statusCode\": 200}"
+                    },
+                    "passthroughBehavior": "when_no_match",
+                    "type": "mock"
+                }
+            }
+        },
+        "/v1/paciente/{pacienteId}": {
+            "get": {
+                "tags": [
+                    "paciente-controler"
+                ],
+                "summary": "findById",
+                "operationId": "findByIdUsingGET",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "name": "pacienteId",
+                    "in": "path",
+                    "description": "pacienteId",
+                    "required": true,
+                    "type": "string"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/PacienteResponse"
+                        },
+                        "headers": {
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "x-amazon-apigateway-integration": {
+                    "httpMethod": "GET",
+                    "uri": "http://13.59.227.206:32773/pre-cadastro/v1/paciente/{pacienteId}",
+                    "responses": {
+                        "default": {
+                            "statusCode": "200",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            }
+                        }
+                    },
+                    "requestParameters": {
+                        "integration.request.path.pacienteId": "method.request.path.pacienteId"
+                    },
+                    "passthroughBehavior": "when_no_match",
+                    "type": "http"
+                }
+            },
+            "put": {
+                "tags": [
+                    "paciente-controler"
+                ],
+                "summary": "update",
+                "operationId": "updateUsingPUT",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                        "name": "pacienteId",
+                        "in": "path",
+                        "description": "pacienteId",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "PacienteRequest",
+                        "description": "pacienteRequest",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/PacienteRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/PacienteResponse"
+                        },
+                        "headers": {
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "400 response",
+                        "headers": {
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "422": {
+                        "description": "422 response",
+                        "headers": {
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "x-amazon-apigateway-integration": {
+                    "httpMethod": "PUT",
+                    "uri": "http://13.59.227.206:32773/pre-cadastro/v1/paciente/{pacienteId}",
+                    "responses": {
+                        "400": {
+                            "statusCode": "422",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Methods": "integration.response.header.Access-Control-Allow-Methods",
+                                "method.response.header.Access-Control-Allow-Headers": "integration.response.header.Access-Control-Allow-Headers",
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            }
+                        },
+                        "422": {
+                            "statusCode": "400",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Methods": "integration.response.header.Access-Control-Allow-Methods",
+                                "method.response.header.Access-Control-Allow-Headers": "integration.response.header.Access-Control-Allow-Headers",
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            }
+                        },
+                        "default": {
+                            "statusCode": "200",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Methods": "integration.response.header.Access-Control-Allow-Methods",
+                                "method.response.header.Access-Control-Allow-Headers": "integration.response.header.Access-Control-Allow-Headers",
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            }
+                        }
+                    },
+                    "requestParameters": {
+                        "integration.request.path.pacienteId": "method.request.path.pacienteId"
+                    },
+                    "passthroughBehavior": "when_no_match",
+                    "type": "http"
+                }
+            },
+            "delete": {
+                "tags": [
+                    "paciente-controler"
+                ],
+                "summary": "delete",
+                "operationId": "deleteUsingDELETE",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "name": "pacienteId",
+                    "in": "path",
+                    "description": "pacienteId",
+                    "required": true,
+                    "type": "string"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Paciente"
+                        },
+                        "headers": {
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "x-amazon-apigateway-integration": {
+                    "httpMethod": "DELETE",
+                    "uri": "http://13.59.227.206:32773/pre-cadastro/v1/paciente/{pacienteId}",
+                    "responses": {
+                        "default": {
+                            "statusCode": "200",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            }
+                        }
+                    },
+                    "requestParameters": {
+                        "integration.request.path.pacienteId": "method.request.path.pacienteId"
+                    },
+                    "passthroughBehavior": "when_no_match",
+                    "type": "http"
+                }
+            },
+            "options": {
+                "consumes": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 response",
+                        "headers": {
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "x-amazon-apigateway-integration": {
+                    "responses": {
+                        "default": {
+                            "statusCode": "200",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,OPTIONS,PUT'",
+                                "method.response.header.Access-Control-Allow-Headers": "'*'",
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            }
+                        }
+                    },
+                    "requestTemplates": {
+                        "application/json": "{\"statusCode\": 200}"
+                    },
+                    "passthroughBehavior": "when_no_match",
+                    "type": "mock"
+                }
+            }
+        },
+        "/v1/paciente/{pacienteId}/cartaoSaude": {
+            "post": {
+                "tags": [
+                    "paciente-controler"
+                ],
+                "summary": "createCartaoSaude",
+                "operationId": "createCartaoSaudeUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [{
+                        "name": "pacienteId",
+                        "in": "path",
+                        "description": "pacienteId",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "CartaoSaudeRequest",
+                        "description": "cartaoSaudeRequest",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CartaoSaudeRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Created",
+                        "headers": {
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "x-amazon-apigateway-integration": {
+                    "httpMethod": "POST",
+                    "uri": "http://13.59.227.206:32773/pre-cadastro/v1/paciente/{pacienteId}/cartaoSaude",
+                    "responses": {
+                        "default": {
+                            "statusCode": "200",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            }
+                        }
+                    },
+                    "requestParameters": {
+                        "integration.request.path.pacienteId": "method.request.path.pacienteId"
+                    },
+                    "passthroughBehavior": "when_no_match",
+                    "type": "http"
+                }
+            },
+            "put": {
+                "tags": [
+                    "paciente-controler"
+                ],
+                "summary": "updateCartaoSaude",
+                "operationId": "updateCartaoSaudeUsingPUT",
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [{
+                        "name": "pacienteId",
+                        "in": "path",
+                        "description": "pacienteId",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "CartaoSaudeRequest",
+                        "description": "cartaoSaudeRequest",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CartaoSaudeRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Created",
+                        "headers": {
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "x-amazon-apigateway-integration": {
+                    "httpMethod": "PUT",
+                    "uri": "http://13.59.227.206:32773/pre-cadastro/v1/paciente/{pacienteId}/cartaoSaude",
+                    "responses": {
+                        "default": {
+                            "statusCode": "200",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            }
+                        }
+                    },
+                    "requestParameters": {
+                        "integration.request.path.pacienteId": "method.request.path.pacienteId"
+                    },
+                    "passthroughBehavior": "when_no_match",
+                    "type": "http"
+                }
+            },
+            "options": {
+                "consumes": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 response",
+                        "headers": {
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "x-amazon-apigateway-integration": {
+                    "responses": {
+                        "default": {
+                            "statusCode": "200",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,POST,PUT'",
+                                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            }
+                        }
+                    },
+                    "requestTemplates": {
+                        "application/json": "{\"statusCode\": 200}"
+                    },
+                    "passthroughBehavior": "when_no_match",
+                    "type": "mock"
+                }
+            }
+        },
+        "/v1/paciente/{pacienteId}/cartaoSaude/{convenioId}": {
+            "delete": {
+                "tags": [
+                    "paciente-controler"
+                ],
+                "summary": "deleteCartaoSaude",
+                "operationId": "deleteCartaoSaudeUsingDELETE",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                        "name": "convenioId",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "pacienteId",
+                        "in": "path",
+                        "description": "pacienteId",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Paciente"
+                        },
+                        "headers": {
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content",
+                        "headers": {
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "404 response",
+                        "headers": {
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "500 response",
+                        "headers": {
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "x-amazon-apigateway-integration": {
+                    "httpMethod": "DELETE",
+                    "uri": "http://13.59.227.206:32773/pre-cadastro/v1/paciente/{pacienteId}/cartaoSaude/{convenioId}",
+                    "responses": {
+                        "204": {
+                            "statusCode": "204",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            }
+                        },
+                        "404": {
+                            "statusCode": "404",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            }
+                        },
+                        "500": {
+                            "statusCode": "500",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            }
+                        },
+                        "default": {
+                            "statusCode": "200",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            }
+                        }
+                    },
+                    "requestParameters": {
+                        "integration.request.path.convenioId": "method.request.path.convenioId",
+                        "integration.request.path.pacienteId": "method.request.path.pacienteId"
+                    },
+                    "passthroughBehavior": "when_no_match",
+                    "type": "http"
+                }
+            },
+            "options": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 response",
+                        "headers": {
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "x-amazon-apigateway-integration": {
+                    "responses": {
+                        "default": {
+                            "statusCode": "200",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Methods": "'DELETE,OPTIONS'",
+                                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            }
+                        }
+                    },
+                    "requestTemplates": {
+                        "application/json": "{\"statusCode\": 200}"
+                    },
+                    "passthroughBehavior": "when_no_match",
+                    "type": "mock"
+                }
+            }
+        },
+        "/v1/paciente/{pacienteId}/endereco": {
+            "post": {
+                "tags": [
+                    "paciente-controler"
+                ],
+                "summary": "createAddress",
+                "operationId": "createAddressUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                        "name": "pacienteId",
+                        "in": "path",
+                        "description": "pacienteId",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "ArrayOfEnderecoDto",
+                        "description": "enderecoRequest",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ArrayOfEnderecoDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/ArrayOfEndereco"
+                        },
+                        "headers": {
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "x-amazon-apigateway-integration": {
+                    "httpMethod": "POST",
+                    "uri": "http://13.59.227.206:32773/pre-cadastro/v1/paciente/{pacienteId}/endereco",
+                    "responses": {
+                        "default": {
+                            "statusCode": "200",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            }
+                        }
+                    },
+                    "requestParameters": {
+                        "integration.request.path.pacienteId": "method.request.path.pacienteId"
+                    },
+                    "passthroughBehavior": "when_no_match",
+                    "type": "http"
+                }
+            },
+            "put": {
+                "tags": [
+                    "paciente-controler"
+                ],
+                "summary": "updateEndereco",
+                "operationId": "updateEnderecoUsingPUT",
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [{
+                        "name": "pacienteId",
+                        "in": "path",
+                        "description": "pacienteId",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "ArrayOfEnderecoDto",
+                        "description": "enderecoRequest",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ArrayOfEnderecoDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Created",
+                        "headers": {
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "x-amazon-apigateway-integration": {
+                    "httpMethod": "PUT",
+                    "uri": "http://13.59.227.206:32773/pre-cadastro/v1/paciente/{pacienteId}/endereco",
+                    "responses": {
+                        "default": {
+                            "statusCode": "200",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            }
+                        }
+                    },
+                    "requestParameters": {
+                        "integration.request.path.pacienteId": "method.request.path.pacienteId"
+                    },
+                    "passthroughBehavior": "when_no_match",
+                    "type": "http"
+                }
+            },
+            "options": {
+                "consumes": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 response",
+                        "headers": {
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "x-amazon-apigateway-integration": {
+                    "responses": {
+                        "default": {
+                            "statusCode": "200",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,POST,PUT'",
+                                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            }
+                        }
+                    },
+                    "requestTemplates": {
+                        "application/json": "{\"statusCode\": 200}"
+                    },
+                    "passthroughBehavior": "when_no_match",
+                    "type": "mock"
+                }
+            }
+        },
+        "/v1/paciente/{pacienteId}/endereco/{enderecoId}": {
+            "delete": {
+                "tags": [
+                    "paciente-controler"
+                ],
+                "summary": "deleteEndereco",
+                "operationId": "deleteEnderecoUsingDELETE",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                        "name": "enderecoId",
+                        "in": "path",
+                        "description": "enderecoId",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "pacienteId",
+                        "in": "path",
+                        "description": "pacienteId",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Paciente"
+                        },
+                        "headers": {
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "x-amazon-apigateway-integration": {
+                    "httpMethod": "DELETE",
+                    "uri": "http://13.59.227.206:32773/pre-cadastro/v1/paciente/{pacienteId}/endereco/{enderecoId}",
+                    "responses": {
+                        "default": {
+                            "statusCode": "200",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            }
+                        }
+                    },
+                    "requestParameters": {
+                        "integration.request.path.enderecoId": "method.request.path.enderecoId",
+                        "integration.request.path.pacienteId": "method.request.path.pacienteId"
+                    },
+                    "passthroughBehavior": "when_no_match",
+                    "type": "http"
+                }
+            },
+            "options": {
+                "consumes": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 response",
+                        "headers": {
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "x-amazon-apigateway-integration": {
+                    "responses": {
+                        "default": {
+                            "statusCode": "200",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Methods": "'DELETE,OPTIONS'",
+                                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            }
+                        }
+                    },
+                    "requestTemplates": {
+                        "application/json": "{\"statusCode\": 200}"
+                    },
+                    "passthroughBehavior": "when_no_match",
+                    "type": "mock"
+                }
+            }
+        },
+        "/v1/paciente/{pacienteId}/telefone": {
+            "post": {
+                "tags": [
+                    "paciente-controler"
+                ],
+                "summary": "createTelefone",
+                "operationId": "createTelefoneUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                        "name": "pacienteId",
+                        "in": "path",
+                        "description": "pacienteId",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "ArrayOfTelefoneDto",
+                        "description": "telefoneRequest",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ArrayOfTelefoneDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/ArrayOfTelefone"
+                        },
+                        "headers": {
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "x-amazon-apigateway-integration": {
+                    "httpMethod": "POST",
+                    "uri": "http://13.59.227.206:32773/pre-cadastro/v1/paciente/{pacienteId}/telefone",
+                    "responses": {
+                        "default": {
+                            "statusCode": "200",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            }
+                        }
+                    },
+                    "requestParameters": {
+                        "integration.request.path.pacienteId": "method.request.path.pacienteId"
+                    },
+                    "passthroughBehavior": "when_no_match",
+                    "type": "http"
+                }
+            },
+            "put": {
+                "tags": [
+                    "paciente-controler"
+                ],
+                "summary": "updateTelefone",
+                "operationId": "updateTelefoneUsingPUT",
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [{
+                        "name": "pacienteId",
+                        "in": "path",
+                        "description": "pacienteId",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "ArrayOfTelefoneDto",
+                        "description": "telefoneRequest",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ArrayOfTelefoneDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Created",
+                        "headers": {
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "x-amazon-apigateway-integration": {
+                    "httpMethod": "PUT",
+                    "uri": "http://13.59.227.206:32773/pre-cadastro/v1/paciente/{pacienteId}/telefone",
+                    "responses": {
+                        "default": {
+                            "statusCode": "200",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            }
+                        }
+                    },
+                    "requestParameters": {
+                        "integration.request.path.pacienteId": "method.request.path.pacienteId"
+                    },
+                    "passthroughBehavior": "when_no_match",
+                    "type": "http"
+                }
+            },
+            "options": {
+                "consumes": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 response",
+                        "headers": {
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "x-amazon-apigateway-integration": {
+                    "responses": {
+                        "default": {
+                            "statusCode": "200",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,POST,PUT'",
+                                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            }
+                        }
+                    },
+                    "requestTemplates": {
+                        "application/json": "{\"statusCode\": 200}"
+                    },
+                    "passthroughBehavior": "when_no_match",
+                    "type": "mock"
+                }
+            }
+        },
+        "/v1/paciente/{pacienteId}/telefone/{telefoneId}": {
+            "delete": {
+                "tags": [
+                    "paciente-controler"
+                ],
+                "summary": "deleteTelefone",
+                "operationId": "deleteTelefoneUsingDELETE",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                        "name": "pacienteId",
+                        "in": "path",
+                        "description": "pacienteId",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "telefoneId",
+                        "in": "path",
+                        "description": "telefoneId",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Paciente"
+                        },
+                        "headers": {
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "x-amazon-apigateway-integration": {
+                    "httpMethod": "DELETE",
+                    "uri": "http://13.59.227.206:32773/pre-cadastro/v1/paciente/{pacienteId}/telefone/{telefoneId}",
+                    "responses": {
+                        "default": {
+                            "statusCode": "200",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            }
+                        }
+                    },
+                    "requestParameters": {
+                        "integration.request.path.telefoneId": "method.request.path.telefoneId",
+                        "integration.request.path.pacienteId": "method.request.path.pacienteId"
+                    },
+                    "passthroughBehavior": "when_no_match",
+                    "type": "http"
+                }
+            },
+            "options": {
+                "consumes": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 response",
+                        "headers": {
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Methods": {
+                                "type": "string"
+                            },
+                            "Access-Control-Allow-Headers": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "x-amazon-apigateway-integration": {
+                    "responses": {
+                        "default": {
+                            "statusCode": "200",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Methods": "'DELETE,OPTIONS'",
+                                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            }
+                        }
+                    },
+                    "requestTemplates": {
+                        "application/json": "{\"statusCode\": 200}"
+                    },
+                    "passthroughBehavior": "when_no_match",
+                    "type": "mock"
+                }
+            }
+        },
+        "/v1/tipo-telefone": {
+            "get": {
+                "tags": [
+                    "buble-medical-controler"
+                ],
+                "summary": "findAllTipoTelefone",
+                "operationId": "findAllTipoTelefoneUsingGET",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ArrayOfTelefoneResponse"
+                        },
+                        "headers": {
+                            "Access-Control-Allow-Origin": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "x-amazon-apigateway-integration": {
+                    "httpMethod": "GET",
+                    "uri": "http://13.59.227.206:32773/pre-cadastro/v1/tipo-telefone",
+                    "responses": {
+                        "default": {
+                            "statusCode": "200",
+                            "responseParameters": {
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            }
+                        }
+                    },
+                    "passthroughBehavior": "when_no_match",
+                    "type": "http"
+                }
+            },
+            "options": {
+                "consumes": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 response"
+                    }
+                },
+                "x-amazon-apigateway-integration": {
+                    "responses": {
+                        "default": {
+                            "statusCode": "200"
+                        }
+                    },
+                    "requestTemplates": {
+                        "application/json": "{\"statusCode\": 200}"
+                    },
+                    "passthroughBehavior": "when_no_match",
+                    "type": "mock"
+                }
+            }
+        }
+    },
+    "definitions": {
+        "ValidarTokenRequest": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "token": {
+                    "type": "string"
+                }
+            },
+            "title": "ValidarTokenRequest"
+        },
+        "CartaoSaudeRequest": {
+            "type": "object",
+            "properties": {
+                "convenio": {
+                    "type": "string"
+                },
+                "convenioId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "dtValidade": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "numeroCarteira": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "rede": {
+                    "type": "string"
+                },
+                "tipoContrato": {
+                    "type": "string"
+                }
+            },
+            "title": "CartaoSaudeRequest"
+        },
+        "Telefone": {
+            "type": "object",
+            "properties": {
+                "numDdd": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "numTelefone": {
+                    "type": "string"
+                },
+                "telefoneId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "tipoTelefone": {
+                    "type": "string",
+                    "enum": [
+                        "RESIDENCIAL",
+                        "CELULAR",
+                        "COMERCIAL"
+                    ]
+                }
+            },
+            "title": "Telefone"
+        },
+        "ArrayOfEndereco": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/Endereco"
+            }
+        },
+        "TelefoneDto": {
+            "type": "object",
+            "properties": {
+                "numDdd": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "numTelefone": {
+                    "type": "string"
+                },
+                "telefoneId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "tipoTelefone": {
+                    "type": "string",
+                    "enum": [
+                        "RESIDENCIAL",
+                        "CELULAR",
+                        "COMERCIAL"
+                    ]
+                }
+            },
+            "title": "TelefoneDto"
+        },
+        "ArrayOfTelefoneResponse": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/TelefoneResponse"
+            }
+        },
+        "TelefoneResponse": {
+            "type": "object",
+            "properties": {
+                "descTipoTelefone": {
+                    "type": "string"
+                },
+                "tpTelefoneId": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "TelefoneResponse"
+        },
+        "ArrayOfTelefoneDto": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/TelefoneDto"
+            }
+        },
+        "CartaoSaude": {
+            "type": "object",
+            "properties": {
+                "convenio": {
+                    "type": "string"
+                },
+                "convenioId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "dtValidade": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "numeroCarteira": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "rede": {
+                    "type": "string"
+                },
+                "tipoContrato": {
+                    "type": "string"
+                }
+            },
+            "title": "CartaoSaude"
+        },
+        "Endereco": {
+            "type": "object",
+            "properties": {
+                "bairro": {
+                    "type": "string"
+                },
+                "cep": {
+                    "type": "string"
+                },
+                "cidade": {
+                    "type": "string"
+                },
+                "dsComplemento": {
+                    "type": "string"
+                },
+                "enderecoId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "estado": {
+                    "type": "string"
+                },
+                "logradouro": {
+                    "type": "string"
+                },
+                "numImovel": {
+                    "type": "string"
+                },
+                "tipoLogradouro": {
+                    "$ref": "#/definitions/TipoLogradouro"
+                }
+            },
+            "title": "Endereco"
+        },
+        "Paciente": {
+            "type": "object",
+            "properties": {
+                "cartaoSaude": {
+                    "$ref": "#/definitions/CartaoSaude"
+                },
+                "cpf": {
+                    "type": "string"
+                },
+                "deficiencia": {
+                    "type": "string"
+                },
+                "dtEmissaoRg": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "dtNascimento": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "enderecos": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Endereco"
+                    }
+                },
+                "estadoExpedidor": {
+                    "type": "string"
+                },
+                "nome": {
+                    "type": "string"
+                },
+                "orgExpedidorRg": {
+                    "type": "string"
+                },
+                "pacienteId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "rg": {
+                    "type": "string"
+                },
+                "sexo": {
+                    "type": "string"
+                },
+                "telefones": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Telefone"
+                    }
+                }
+            },
+            "title": "Paciente"
+        },
+        "ArrayOfTelefone": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/Telefone"
+            }
+        },
+        "PacienteRequest": {
+            "type": "object",
+            "properties": {
+                "cpf": {
+                    "type": "string"
+                },
+                "deficiencia": {
+                    "type": "string"
+                },
+                "dtEmissaoRg": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "dtNascimento": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "estadoExpedidor": {
+                    "type": "string"
+                },
+                "nome": {
+                    "type": "string"
+                },
+                "orgExpedidorRg": {
+                    "type": "string"
+                },
+                "rg": {
+                    "type": "string"
+                },
+                "sexo": {
+                    "type": "string"
+                }
+            },
+            "title": "PacienteRequest"
+        },
+        "TipoLogradouro": {
+            "type": "object",
+            "properties": {
+                "dsTpLogradouro": {
+                    "type": "string"
+                },
+                "tpLogradouroId": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            },
+            "title": "TipoLogradouro"
+        },
+        "TokenRequest": {
+            "type": "object",
+            "properties": {
+                "cpf": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                }
+            },
+            "title": "TokenRequest"
+        },
+        "ArrayOfEnderecoDto": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/EnderecoDto"
+            }
+        },
+        "PacienteResponse": {
+            "type": "object",
+            "properties": {
+                "cartaoSaude": {
+                    "$ref": "#/definitions/CartaoSaudeRequest"
+                },
+                "cpf": {
+                    "type": "string"
+                },
+                "deficiencia": {
+                    "type": "string"
+                },
+                "dtEmissaoRg": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "dtNascimento": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "enderecos": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/EnderecoDto"
+                    }
+                },
+                "estadoExpedidor": {
+                    "type": "string"
+                },
+                "nome": {
+                    "type": "string"
+                },
+                "orgExpedidorRg": {
+                    "type": "string"
+                },
+                "pacienteId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "rg": {
+                    "type": "string"
+                },
+                "sexo": {
+                    "type": "string"
+                },
+                "telefones": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/TelefoneDto"
+                    }
+                }
+            },
+            "title": "PacienteResponse"
+        },
+        "EnderecoDto": {
+            "type": "object",
+            "properties": {
+                "bairro": {
+                    "type": "string"
+                },
+                "cep": {
+                    "type": "string"
+                },
+                "cidade": {
+                    "type": "string"
+                },
+                "dsComplemento": {
+                    "type": "string"
+                },
+                "enderecoId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "estado": {
+                    "type": "string"
+                },
+                "logradouro": {
+                    "type": "string"
+                },
+                "numImovel": {
+                    "type": "string"
+                },
+                "tipoLogradouro": {
+                    "type": "string"
+                }
+            },
+            "title": "EnderecoDto"
+        },
+        "TokenUserResponse": {
+            "type": "object",
+            "properties": {
+                "cpf": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                }
+            },
+            "title": "TokenUserResponse"
+        },
+        "MODEL3fbdbe": {
+            "type": "object"
+        }
+    },
+    "x-amazon-apigateway-documentation": {
+        "version": "1",
+        "createdDate": "2021-08-12T02:29:45Z",
+        "documentationParts": [{
+                "location": {
+                    "type": "API"
+                },
+                "properties": {
+                    "info": {
+                        "description": "\"Spring Boot REST API\"",
+                        "license": {
+                            "name": "Apache License Version 2.0",
+                            "url": "https://www.apache.org/licenses/LICENSE-2.0\""
+                        }
+                    },
+                    "tags": [{
+                            "name": "buble-medical-controler",
+                            "description": "Buble Medical Controler"
+                        },
+                        {
+                            "name": "paciente-controler",
+                            "description": "Paciente Controler"
+                        }
+                    ]
+                }
+            },
+            {
+                "location": {
+                    "type": "METHOD",
+                    "path": "/v1/paciente/cpf/{cpf}/verify",
+                    "method": "GET"
+                },
+                "properties": {
+                    "tags": [
+                        "paciente-controler"
+                    ],
+                    "summary": "verifyExistsCpf"
+                }
+            },
+            {
+                "location": {
+                    "type": "METHOD",
+                    "path": "/v1/paciente/cpf/{cpf}",
+                    "method": "GET"
+                },
+                "properties": {
+                    "tags": [
+                        "paciente-controler"
+                    ],
+                    "summary": "findByCpf"
+                }
+            },
+            {
+                "location": {
+                    "type": "METHOD",
+                    "path": "/v1/paciente/{pacienteId}/cartaoSaude/{convenioId}",
+                    "method": "DELETE"
+                },
+                "properties": {
+                    "tags": [
+                        "paciente-controler"
+                    ],
+                    "summary": "deleteCartaoSaude"
+                }
+            },
+            {
+                "location": {
+                    "type": "METHOD",
+                    "path": "/v1/paciente/{pacienteId}/cartaoSaude",
+                    "method": "POST"
+                },
+                "properties": {
+                    "tags": [
+                        "paciente-controler"
+                    ],
+                    "summary": "createCartaoSaude"
+                }
+            },
+            {
+                "location": {
+                    "type": "METHOD",
+                    "path": "/v1/paciente/{pacienteId}/cartaoSaude",
+                    "method": "PUT"
+                },
+                "properties": {
+                    "tags": [
+                        "paciente-controler"
+                    ],
+                    "summary": "updateCartaoSaude"
+                }
+            },
+            {
+                "location": {
+                    "type": "METHOD",
+                    "path": "/v1/paciente/{pacienteId}/endereco/{enderecoId}",
+                    "method": "DELETE"
+                },
+                "properties": {
+                    "tags": [
+                        "paciente-controler"
+                    ],
+                    "summary": "deleteEndereco"
+                }
+            },
+            {
+                "location": {
+                    "type": "METHOD",
+                    "path": "/v1/paciente/{pacienteId}/endereco",
+                    "method": "POST"
+                },
+                "properties": {
+                    "tags": [
+                        "paciente-controler"
+                    ],
+                    "summary": "createAddress"
+                }
+            },
+            {
+                "location": {
+                    "type": "METHOD",
+                    "path": "/v1/paciente/{pacienteId}/endereco",
+                    "method": "PUT"
+                },
+                "properties": {
+                    "tags": [
+                        "paciente-controler"
+                    ],
+                    "summary": "updateEndereco"
+                }
+            },
+            {
+                "location": {
+                    "type": "METHOD",
+                    "path": "/v1/paciente/{pacienteId}/telefone/{telefoneId}",
+                    "method": "DELETE"
+                },
+                "properties": {
+                    "tags": [
+                        "paciente-controler"
+                    ],
+                    "summary": "deleteTelefone"
+                }
+            },
+            {
+                "location": {
+                    "type": "METHOD",
+                    "path": "/v1/paciente/{pacienteId}/telefone",
+                    "method": "POST"
+                },
+                "properties": {
+                    "tags": [
+                        "paciente-controler"
+                    ],
+                    "summary": "createTelefone"
+                }
+            },
+            {
+                "location": {
+                    "type": "METHOD",
+                    "path": "/v1/paciente/{pacienteId}/telefone",
+                    "method": "PUT"
+                },
+                "properties": {
+                    "tags": [
+                        "paciente-controler"
+                    ],
+                    "summary": "updateTelefone"
+                }
+            },
+            {
+                "location": {
+                    "type": "METHOD",
+                    "path": "/v1/paciente/{pacienteId}",
+                    "method": "DELETE"
+                },
+                "properties": {
+                    "tags": [
+                        "paciente-controler"
+                    ],
+                    "summary": "delete"
+                }
+            },
+            {
+                "location": {
+                    "type": "METHOD",
+                    "path": "/v1/paciente/{pacienteId}",
+                    "method": "GET"
+                },
+                "properties": {
+                    "tags": [
+                        "paciente-controler"
+                    ],
+                    "summary": "findById"
+                }
+            },
+            {
+                "location": {
+                    "type": "METHOD",
+                    "path": "/v1/paciente/{pacienteId}",
+                    "method": "PUT"
+                },
+                "properties": {
+                    "tags": [
+                        "paciente-controler"
+                    ],
+                    "summary": "update"
+                }
+            },
+            {
+                "location": {
+                    "type": "METHOD",
+                    "path": "/v1/paciente",
+                    "method": "GET"
+                },
+                "properties": {
+                    "tags": [
+                        "paciente-controler"
+                    ],
+                    "summary": "findAll"
+                }
+            },
+            {
+                "location": {
+                    "type": "METHOD",
+                    "path": "/v1/paciente",
+                    "method": "POST"
+                },
+                "properties": {
+                    "tags": [
+                        "paciente-controler"
+                    ],
+                    "summary": "create"
+                }
+            },
+            {
+                "location": {
+                    "type": "METHOD",
+                    "path": "/v1/tipo-telefone",
+                    "method": "GET"
+                },
+                "properties": {
+                    "tags": [
+                        "buble-medical-controler"
+                    ],
+                    "summary": "findAllTipoTelefone"
+                }
+            },
+            {
+                "location": {
+                    "type": "METHOD",
+                    "path": "/v2/paciente/{pacienteId}",
+                    "method": "PUT"
+                },
+                "properties": {
+                    "tags": [
+                        "paciente-controler"
+                    ],
+                    "summary": "updateV2"
+                }
+            },
+            {
+                "location": {
+                    "type": "MODEL",
+                    "name": "CartaoSaude"
+                },
+                "properties": {
+                    "title": "CartaoSaude"
+                }
+            },
+            {
+                "location": {
+                    "type": "MODEL",
+                    "name": "CartaoSaudeRequest"
+                },
+                "properties": {
+                    "title": "CartaoSaudeRequest"
+                }
+            },
+            {
+                "location": {
+                    "type": "MODEL",
+                    "name": "Endereco"
+                },
+                "properties": {
+                    "title": "Endereco"
+                }
+            },
+            {
+                "location": {
+                    "type": "MODEL",
+                    "name": "EnderecoDto"
+                },
+                "properties": {
+                    "title": "EnderecoDto"
+                }
+            },
+            {
+                "location": {
+                    "type": "MODEL",
+                    "name": "Paciente"
+                },
+                "properties": {
+                    "title": "Paciente"
+                }
+            },
+            {
+                "location": {
+                    "type": "MODEL",
+                    "name": "PacienteRequest"
+                },
+                "properties": {
+                    "title": "PacienteRequest"
+                }
+            },
+            {
+                "location": {
+                    "type": "MODEL",
+                    "name": "PacienteResponse"
+                },
+                "properties": {
+                    "title": "PacienteResponse"
+                }
+            },
+            {
+                "location": {
+                    "type": "MODEL",
+                    "name": "PutPacienteRequest"
+                },
+                "properties": {
+                    "title": "PutPacienteRequest"
+                }
+            },
+            {
+                "location": {
+                    "type": "MODEL",
+                    "name": "Telefone"
+                },
+                "properties": {
+                    "title": "Telefone"
+                }
+            },
+            {
+                "location": {
+                    "type": "MODEL",
+                    "name": "TelefoneDto"
+                },
+                "properties": {
+                    "title": "TelefoneDto"
+                }
+            },
+            {
+                "location": {
+                    "type": "MODEL",
+                    "name": "TelefoneResponse"
+                },
+                "properties": {
+                    "title": "TelefoneResponse"
+                }
+            },
+            {
+                "location": {
+                    "type": "MODEL",
+                    "name": "TipoLogradouro"
+                },
+                "properties": {
+                    "title": "TipoLogradouro"
+                }
+            },
+            {
+                "location": {
+                    "type": "MODEL",
+                    "name": "TokenUserResponse"
+                },
+                "properties": {
+                    "title": "TokenUserResponse"
+                }
+            },
+            {
+                "location": {
+                    "type": "PATH_PARAMETER",
+                    "path": "/v1/paciente/{pacienteId}/cartaoSaude/{convenioId}",
+                    "method": "DELETE",
+                    "name": "cartaoSaudeId"
+                },
+                "properties": {
+                    "description": "cartaoSaudeId"
+                }
+            },
+            {
+                "location": {
+                    "type": "PATH_PARAMETER",
+                    "path": "/v1/paciente/cpf/{cpf}/verify",
+                    "method": "GET",
+                    "name": "cpf"
+                },
+                "properties": {
+                    "description": "cpf"
+                }
+            },
+            {
+                "location": {
+                    "type": "PATH_PARAMETER",
+                    "path": "/v1/paciente/cpf/{cpf}",
+                    "method": "GET",
+                    "name": "cpf"
+                },
+                "properties": {
+                    "description": "cpf"
+                }
+            },
+            {
+                "location": {
+                    "type": "PATH_PARAMETER",
+                    "path": "/v1/paciente/{pacienteId}/endereco/{enderecoId}",
+                    "method": "DELETE",
+                    "name": "enderecoId"
+                },
+                "properties": {
+                    "description": "enderecoId"
+                }
+            },
+            {
+                "location": {
+                    "type": "PATH_PARAMETER",
+                    "path": "/v1/paciente/{pacienteId}/cartaoSaude/{convenioId}",
+                    "method": "DELETE",
+                    "name": "pacienteId"
+                },
+                "properties": {
+                    "description": "pacienteId"
+                }
+            },
+            {
+                "location": {
+                    "type": "PATH_PARAMETER",
+                    "path": "/v1/paciente/{pacienteId}/cartaoSaude",
+                    "method": "POST",
+                    "name": "pacienteId"
+                },
+                "properties": {
+                    "description": "pacienteId"
+                }
+            },
+            {
+                "location": {
+                    "type": "PATH_PARAMETER",
+                    "path": "/v1/paciente/{pacienteId}/cartaoSaude",
+                    "method": "PUT",
+                    "name": "pacienteId"
+                },
+                "properties": {
+                    "description": "pacienteId"
+                }
+            },
+            {
+                "location": {
+                    "type": "PATH_PARAMETER",
+                    "path": "/v1/paciente/{pacienteId}/endereco/{enderecoId}",
+                    "method": "DELETE",
+                    "name": "pacienteId"
+                },
+                "properties": {
+                    "description": "pacienteId"
+                }
+            },
+            {
+                "location": {
+                    "type": "PATH_PARAMETER",
+                    "path": "/v1/paciente/{pacienteId}/endereco",
+                    "method": "POST",
+                    "name": "pacienteId"
+                },
+                "properties": {
+                    "description": "pacienteId"
+                }
+            },
+            {
+                "location": {
+                    "type": "PATH_PARAMETER",
+                    "path": "/v1/paciente/{pacienteId}/endereco",
+                    "method": "PUT",
+                    "name": "pacienteId"
+                },
+                "properties": {
+                    "description": "pacienteId"
+                }
+            },
+            {
+                "location": {
+                    "type": "PATH_PARAMETER",
+                    "path": "/v1/paciente/{pacienteId}/telefone/{telefoneId}",
+                    "method": "DELETE",
+                    "name": "pacienteId"
+                },
+                "properties": {
+                    "description": "pacienteId"
+                }
+            },
+            {
+                "location": {
+                    "type": "PATH_PARAMETER",
+                    "path": "/v1/paciente/{pacienteId}/telefone",
+                    "method": "POST",
+                    "name": "pacienteId"
+                },
+                "properties": {
+                    "description": "pacienteId"
+                }
+            },
+            {
+                "location": {
+                    "type": "PATH_PARAMETER",
+                    "path": "/v1/paciente/{pacienteId}/telefone",
+                    "method": "PUT",
+                    "name": "pacienteId"
+                },
+                "properties": {
+                    "description": "pacienteId"
+                }
+            },
+            {
+                "location": {
+                    "type": "PATH_PARAMETER",
+                    "path": "/v1/paciente/{pacienteId}",
+                    "method": "DELETE",
+                    "name": "pacienteId"
+                },
+                "properties": {
+                    "description": "pacienteId"
+                }
+            },
+            {
+                "location": {
+                    "type": "PATH_PARAMETER",
+                    "path": "/v1/paciente/{pacienteId}",
+                    "method": "GET",
+                    "name": "pacienteId"
+                },
+                "properties": {
+                    "description": "pacienteId"
+                }
+            },
+            {
+                "location": {
+                    "type": "PATH_PARAMETER",
+                    "path": "/v1/paciente/{pacienteId}",
+                    "method": "PUT",
+                    "name": "pacienteId"
+                },
+                "properties": {
+                    "description": "pacienteId"
+                }
+            },
+            {
+                "location": {
+                    "type": "PATH_PARAMETER",
+                    "path": "/v2/paciente/{pacienteId}",
+                    "method": "PUT",
+                    "name": "pacienteId"
+                },
+                "properties": {
+                    "description": "pacienteId"
+                }
+            },
+            {
+                "location": {
+                    "type": "PATH_PARAMETER",
+                    "path": "/v1/paciente/{pacienteId}/telefone/{telefoneId}",
+                    "method": "DELETE",
+                    "name": "telefoneId"
+                },
+                "properties": {
+                    "description": "telefoneId"
+                }
+            },
+            {
+                "location": {
+                    "type": "QUERY_PARAMETER",
+                    "path": "/v1/paciente",
+                    "method": "GET",
+                    "name": "campoOrdenado"
+                },
+                "properties": {
+                    "description": "campoOrdenado"
+                }
+            },
+            {
+                "location": {
+                    "type": "QUERY_PARAMETER",
+                    "path": "/v1/paciente",
+                    "method": "GET",
+                    "name": "directionType"
+                },
+                "properties": {
+                    "description": "directionType"
+                }
+            },
+            {
+                "location": {
+                    "type": "QUERY_PARAMETER",
+                    "path": "/v1/paciente",
+                    "method": "GET",
+                    "name": "nome"
+                },
+                "properties": {
+                    "description": "nome"
+                }
+            },
+            {
+                "location": {
+                    "type": "QUERY_PARAMETER",
+                    "path": "/v1/paciente",
+                    "method": "GET",
+                    "name": "pagina"
+                },
+                "properties": {
+                    "description": "pagina"
+                }
+            },
+            {
+                "location": {
+                    "type": "QUERY_PARAMETER",
+                    "path": "/v1/paciente",
+                    "method": "GET",
+                    "name": "quantidade"
+                },
+                "properties": {
+                    "description": "quantidade"
+                }
+            },
+            {
+                "location": {
+                    "type": "REQUEST_BODY",
+                    "path": "/v1/paciente/{pacienteId}/cartaoSaude",
+                    "method": "POST"
+                },
+                "properties": {
+                    "description": "cartaoSaudeRequest"
+                }
+            },
+            {
+                "location": {
+                    "type": "REQUEST_BODY",
+                    "path": "/v1/paciente/{pacienteId}/cartaoSaude",
+                    "method": "PUT"
+                },
+                "properties": {
+                    "description": "cartaoSaudeRequest"
+                }
+            },
+            {
+                "location": {
+                    "type": "REQUEST_BODY",
+                    "path": "/v1/paciente/{pacienteId}/endereco",
+                    "method": "POST"
+                },
+                "properties": {
+                    "description": "enderecoRequest"
+                }
+            },
+            {
+                "location": {
+                    "type": "REQUEST_BODY",
+                    "path": "/v1/paciente/{pacienteId}/endereco",
+                    "method": "PUT"
+                },
+                "properties": {
+                    "description": "enderecoRequest"
+                }
+            },
+            {
+                "location": {
+                    "type": "REQUEST_BODY",
+                    "path": "/v1/paciente/{pacienteId}/telefone",
+                    "method": "POST"
+                },
+                "properties": {
+                    "description": "telefoneRequest"
+                }
+            },
+            {
+                "location": {
+                    "type": "REQUEST_BODY",
+                    "path": "/v1/paciente/{pacienteId}/telefone",
+                    "method": "PUT"
+                },
+                "properties": {
+                    "description": "telefoneRequest"
+                }
+            },
+            {
+                "location": {
+                    "type": "REQUEST_BODY",
+                    "path": "/v1/paciente/{pacienteId}",
+                    "method": "PUT"
+                },
+                "properties": {
+                    "description": "pacienteRequest"
+                }
+            },
+            {
+                "location": {
+                    "type": "REQUEST_BODY",
+                    "path": "/v1/paciente",
+                    "method": "POST"
+                },
+                "properties": {
+                    "description": "pacienteRequest"
+                }
+            },
+            {
+                "location": {
+                    "type": "REQUEST_BODY",
+                    "path": "/v2/paciente/{pacienteId}",
+                    "method": "PUT"
+                },
+                "properties": {
+                    "description": "pacienteRequest"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/cpf/{cpf}/verify",
+                    "method": "GET",
+                    "statusCode": "200"
+                },
+                "properties": {
+                    "description": "OK"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/cpf/{cpf}/verify",
+                    "method": "GET",
+                    "statusCode": "401"
+                },
+                "properties": {
+                    "description": "Unauthorized"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/cpf/{cpf}/verify",
+                    "method": "GET",
+                    "statusCode": "403"
+                },
+                "properties": {
+                    "description": "Forbidden"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/cpf/{cpf}/verify",
+                    "method": "GET",
+                    "statusCode": "404"
+                },
+                "properties": {
+                    "description": "Not Found"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/cpf/{cpf}",
+                    "method": "GET",
+                    "statusCode": "200"
+                },
+                "properties": {
+                    "description": "OK"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/cpf/{cpf}",
+                    "method": "GET",
+                    "statusCode": "401"
+                },
+                "properties": {
+                    "description": "Unauthorized"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/cpf/{cpf}",
+                    "method": "GET",
+                    "statusCode": "403"
+                },
+                "properties": {
+                    "description": "Forbidden"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/cpf/{cpf}",
+                    "method": "GET",
+                    "statusCode": "404"
+                },
+                "properties": {
+                    "description": "Not Found"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/{pacienteId}/cartaoSaude/{convenioId}",
+                    "method": "DELETE",
+                    "statusCode": "200"
+                },
+                "properties": {
+                    "description": "OK"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/{pacienteId}/cartaoSaude/{convenioId}",
+                    "method": "DELETE",
+                    "statusCode": "204"
+                },
+                "properties": {
+                    "description": "No Content"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/{pacienteId}/cartaoSaude/{convenioId}",
+                    "method": "DELETE",
+                    "statusCode": "401"
+                },
+                "properties": {
+                    "description": "Unauthorized"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/{pacienteId}/cartaoSaude/{convenioId}",
+                    "method": "DELETE",
+                    "statusCode": "403"
+                },
+                "properties": {
+                    "description": "Forbidden"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/{pacienteId}/cartaoSaude",
+                    "method": "POST",
+                    "statusCode": "200"
+                },
+                "properties": {
+                    "description": "Created"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/{pacienteId}/cartaoSaude",
+                    "method": "POST",
+                    "statusCode": "401"
+                },
+                "properties": {
+                    "description": "Unauthorized"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/{pacienteId}/cartaoSaude",
+                    "method": "POST",
+                    "statusCode": "403"
+                },
+                "properties": {
+                    "description": "Forbidden"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/{pacienteId}/cartaoSaude",
+                    "method": "POST",
+                    "statusCode": "404"
+                },
+                "properties": {
+                    "description": "Not Found"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/{pacienteId}/cartaoSaude",
+                    "method": "PUT",
+                    "statusCode": "200"
+                },
+                "properties": {
+                    "description": "Created"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/{pacienteId}/cartaoSaude",
+                    "method": "PUT",
+                    "statusCode": "401"
+                },
+                "properties": {
+                    "description": "Unauthorized"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/{pacienteId}/cartaoSaude",
+                    "method": "PUT",
+                    "statusCode": "403"
+                },
+                "properties": {
+                    "description": "Forbidden"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/{pacienteId}/cartaoSaude",
+                    "method": "PUT",
+                    "statusCode": "404"
+                },
+                "properties": {
+                    "description": "Not Found"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/{pacienteId}/endereco/{enderecoId}",
+                    "method": "DELETE",
+                    "statusCode": "200"
+                },
+                "properties": {
+                    "description": "OK"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/{pacienteId}/endereco/{enderecoId}",
+                    "method": "DELETE",
+                    "statusCode": "204"
+                },
+                "properties": {
+                    "description": "No Content"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/{pacienteId}/endereco/{enderecoId}",
+                    "method": "DELETE",
+                    "statusCode": "401"
+                },
+                "properties": {
+                    "description": "Unauthorized"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/{pacienteId}/endereco/{enderecoId}",
+                    "method": "DELETE",
+                    "statusCode": "403"
+                },
+                "properties": {
+                    "description": "Forbidden"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/{pacienteId}/endereco",
+                    "method": "POST",
+                    "statusCode": "200"
+                },
+                "properties": {
+                    "description": "Created"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/{pacienteId}/endereco",
+                    "method": "POST",
+                    "statusCode": "401"
+                },
+                "properties": {
+                    "description": "Unauthorized"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/{pacienteId}/endereco",
+                    "method": "POST",
+                    "statusCode": "403"
+                },
+                "properties": {
+                    "description": "Forbidden"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/{pacienteId}/endereco",
+                    "method": "POST",
+                    "statusCode": "404"
+                },
+                "properties": {
+                    "description": "Not Found"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/{pacienteId}/endereco",
+                    "method": "PUT",
+                    "statusCode": "200"
+                },
+                "properties": {
+                    "description": "Created"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/{pacienteId}/endereco",
+                    "method": "PUT",
+                    "statusCode": "401"
+                },
+                "properties": {
+                    "description": "Unauthorized"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/{pacienteId}/endereco",
+                    "method": "PUT",
+                    "statusCode": "403"
+                },
+                "properties": {
+                    "description": "Forbidden"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/{pacienteId}/endereco",
+                    "method": "PUT",
+                    "statusCode": "404"
+                },
+                "properties": {
+                    "description": "Not Found"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/{pacienteId}/telefone/{telefoneId}",
+                    "method": "DELETE",
+                    "statusCode": "200"
+                },
+                "properties": {
+                    "description": "OK"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/{pacienteId}/telefone/{telefoneId}",
+                    "method": "DELETE",
+                    "statusCode": "204"
+                },
+                "properties": {
+                    "description": "No Content"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/{pacienteId}/telefone/{telefoneId}",
+                    "method": "DELETE",
+                    "statusCode": "401"
+                },
+                "properties": {
+                    "description": "Unauthorized"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/{pacienteId}/telefone/{telefoneId}",
+                    "method": "DELETE",
+                    "statusCode": "403"
+                },
+                "properties": {
+                    "description": "Forbidden"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/{pacienteId}/telefone",
+                    "method": "POST",
+                    "statusCode": "200"
+                },
+                "properties": {
+                    "description": "Created"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/{pacienteId}/telefone",
+                    "method": "POST",
+                    "statusCode": "401"
+                },
+                "properties": {
+                    "description": "Unauthorized"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/{pacienteId}/telefone",
+                    "method": "POST",
+                    "statusCode": "403"
+                },
+                "properties": {
+                    "description": "Forbidden"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/{pacienteId}/telefone",
+                    "method": "POST",
+                    "statusCode": "404"
+                },
+                "properties": {
+                    "description": "Not Found"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/{pacienteId}/telefone",
+                    "method": "PUT",
+                    "statusCode": "200"
+                },
+                "properties": {
+                    "description": "Created"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/{pacienteId}/telefone",
+                    "method": "PUT",
+                    "statusCode": "401"
+                },
+                "properties": {
+                    "description": "Unauthorized"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/{pacienteId}/telefone",
+                    "method": "PUT",
+                    "statusCode": "403"
+                },
+                "properties": {
+                    "description": "Forbidden"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/{pacienteId}/telefone",
+                    "method": "PUT",
+                    "statusCode": "404"
+                },
+                "properties": {
+                    "description": "Not Found"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/{pacienteId}",
+                    "method": "DELETE",
+                    "statusCode": "200"
+                },
+                "properties": {
+                    "description": "OK"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/{pacienteId}",
+                    "method": "DELETE",
+                    "statusCode": "204"
+                },
+                "properties": {
+                    "description": "No Content"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/{pacienteId}",
+                    "method": "DELETE",
+                    "statusCode": "401"
+                },
+                "properties": {
+                    "description": "Unauthorized"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/{pacienteId}",
+                    "method": "DELETE",
+                    "statusCode": "403"
+                },
+                "properties": {
+                    "description": "Forbidden"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/{pacienteId}",
+                    "method": "GET",
+                    "statusCode": "200"
+                },
+                "properties": {
+                    "description": "OK"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/{pacienteId}",
+                    "method": "GET",
+                    "statusCode": "401"
+                },
+                "properties": {
+                    "description": "Unauthorized"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/{pacienteId}",
+                    "method": "GET",
+                    "statusCode": "403"
+                },
+                "properties": {
+                    "description": "Forbidden"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/{pacienteId}",
+                    "method": "GET",
+                    "statusCode": "404"
+                },
+                "properties": {
+                    "description": "Not Found"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/{pacienteId}",
+                    "method": "PUT",
+                    "statusCode": "200"
+                },
+                "properties": {
+                    "description": "Created"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/{pacienteId}",
+                    "method": "PUT",
+                    "statusCode": "401"
+                },
+                "properties": {
+                    "description": "Unauthorized"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/{pacienteId}",
+                    "method": "PUT",
+                    "statusCode": "403"
+                },
+                "properties": {
+                    "description": "Forbidden"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente/{pacienteId}",
+                    "method": "PUT",
+                    "statusCode": "404"
+                },
+                "properties": {
+                    "description": "Not Found"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente",
+                    "method": "GET",
+                    "statusCode": "200"
+                },
+                "properties": {
+                    "description": "OK"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente",
+                    "method": "GET",
+                    "statusCode": "401"
+                },
+                "properties": {
+                    "description": "Unauthorized"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente",
+                    "method": "GET",
+                    "statusCode": "403"
+                },
+                "properties": {
+                    "description": "Forbidden"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente",
+                    "method": "GET",
+                    "statusCode": "404"
+                },
+                "properties": {
+                    "description": "Not Found"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente",
+                    "method": "POST",
+                    "statusCode": "200"
+                },
+                "properties": {
+                    "description": "OK"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente",
+                    "method": "POST",
+                    "statusCode": "401"
+                },
+                "properties": {
+                    "description": "Unauthorized"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente",
+                    "method": "POST",
+                    "statusCode": "403"
+                },
+                "properties": {
+                    "description": "Forbidden"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/paciente",
+                    "method": "POST",
+                    "statusCode": "404"
+                },
+                "properties": {
+                    "description": "Not Found"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/tipo-telefone",
+                    "method": "GET",
+                    "statusCode": "200"
+                },
+                "properties": {
+                    "description": "OK"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/tipo-telefone",
+                    "method": "GET",
+                    "statusCode": "401"
+                },
+                "properties": {
+                    "description": "Unauthorized"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/tipo-telefone",
+                    "method": "GET",
+                    "statusCode": "403"
+                },
+                "properties": {
+                    "description": "Forbidden"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v1/tipo-telefone",
+                    "method": "GET",
+                    "statusCode": "404"
+                },
+                "properties": {
+                    "description": "Not Found"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v2/paciente/{pacienteId}",
+                    "method": "PUT",
+                    "statusCode": "200"
+                },
+                "properties": {
+                    "description": "Created"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v2/paciente/{pacienteId}",
+                    "method": "PUT",
+                    "statusCode": "401"
+                },
+                "properties": {
+                    "description": "Unauthorized"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v2/paciente/{pacienteId}",
+                    "method": "PUT",
+                    "statusCode": "403"
+                },
+                "properties": {
+                    "description": "Forbidden"
+                }
+            },
+            {
+                "location": {
+                    "type": "RESPONSE",
+                    "path": "/v2/paciente/{pacienteId}",
+                    "method": "PUT",
+                    "statusCode": "404"
+                },
+                "properties": {
+                    "description": "Not Found"
+                }
+            }
+        ]
+    },
+    "x-amazon-apigateway-gateway-responses": {
+        "DEFAULT_4XX": {
+            "responseParameters": {
+                "gatewayresponse.header.Access-Control-Allow-Methods": "'DELETE,GET,OPTIONS,PUT'",
+                "gatewayresponse.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                "gatewayresponse.header.Access-Control-Allow-Origin": "'*'"
+            }
+        },
+        "DEFAULT_5XX": {
+            "responseParameters": {
+                "gatewayresponse.header.Access-Control-Allow-Methods": "'DELETE,GET,OPTIONS,PUT'",
+                "gatewayresponse.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                "gatewayresponse.header.Access-Control-Allow-Origin": "'*'"
+            }
+        }
+    }
+}
